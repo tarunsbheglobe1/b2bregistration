@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Your Account | B2BStays</title>
+<meta name="description" content="Register your hotel or travel business on B2BStays. Choose Commissionable or Net Rates and explore the Supplier and Agent portals.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   B2BStays Registration — all rules scoped under .b2b-reg
+   ===================================================================== */
+.b2b-reg{
+  --b-navy:#0b1f3a; --b-ink:#14233b; --b-muted:#64748b; --b-line:#e3e8ef;
+  --b-bg:#f5f7fa; --b-card:#fff; --b-primary:#1f5eff; --b-primary-d:#1648cc;
+  --b-primary-soft:#eaf0ff; --b-green:#0f9d6b; --b-green-soft:#e6f6ef;
+  --b-amber:#d98a0b; --b-amber-soft:#fdf3df; --b-red:#d93a3a;
+  --b-radius:16px; --b-shadow:0 1px 2px rgba(15,30,60,.05),0 8px 24px rgba(15,30,60,.06);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--b-ink); background:#fff; min-height:100vh; line-height:1.5;
+}
+.b2b-reg *,.b2b-reg *::before,.b2b-reg *::after{box-sizing:border-box}
+.b2b-reg .b-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);min-height:100vh}
+.b2b-reg .b-left{padding:36px clamp(20px,4vw,64px) 56px;max-width:860px;width:100%;margin-left:auto}
+.b2b-reg .b-right{background:linear-gradient(160deg,#eef2f8,#e4ebf5);border-left:1px solid var(--b-line);padding:36px clamp(16px,2.5vw,40px)}
+.b2b-reg .b-right-inner{position:sticky;top:28px}
+
+/* Header */
+.b2b-reg .b-logo{height:60px;max-width:100%;width:auto;display:block}
+.b2b-reg .b-logo-fallback{display:none;font-weight:800;font-size:1.4rem;color:var(--b-navy)}
+.b2b-reg .b-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px;gap:12px}
+.b2b-reg .b-top a.b-signin{font-size:.875rem;font-weight:600;color:var(--b-primary);text-decoration:none}
+.b2b-reg .b-top a.b-signin:hover{text-decoration:underline}
+.b2b-reg h1{font-size:clamp(1.65rem,2.6vw,2.15rem);font-weight:800;letter-spacing:-.02em;color:var(--b-navy);margin:0 0 8px}
+.b2b-reg .b-sub{color:var(--b-muted);font-size:1rem;margin:0 0 28px}
+.b2b-reg .b-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--b-muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.b2b-reg .b-step{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--b-navy);color:#fff;font-size:.7rem}
+
+/* Plans */
+.b2b-reg .b-plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:34px}
+.b2b-reg .b-plan{position:relative;text-align:left;background:var(--b-card);border:1.5px solid var(--b-line);border-radius:var(--b-radius);padding:20px;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;display:flex;flex-direction:column;gap:12px;font:inherit;color:inherit;width:100%}
+.b2b-reg .b-plan:hover{border-color:#b9c7e6;box-shadow:var(--b-shadow);transform:translateY(-2px)}
+.b2b-reg .b-plan:focus-visible{outline:3px solid rgba(31,94,255,.35);outline-offset:2px}
+.b2b-reg .b-plan.is-selected{border-color:var(--b-primary);box-shadow:0 0 0 3px rgba(31,94,255,.12),var(--b-shadow);background:linear-gradient(180deg,#fff,#f6f9ff)}
+.b2b-reg .b-plan-check{position:absolute;top:16px;right:16px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--b-line);display:grid;place-items:center;color:transparent;font-size:.85rem;transition:.2s;background:#fff}
+.b2b-reg .b-plan.is-selected .b-plan-check{background:var(--b-primary);border-color:var(--b-primary);color:#fff}
+.b2b-reg .b-plan-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem}
+.b2b-reg .b-plan.p-comm .b-plan-icon{background:var(--b-primary-soft);color:var(--b-primary)}
+.b2b-reg .b-plan.p-net .b-plan-icon{background:var(--b-green-soft);color:var(--b-green)}
+.b2b-reg .b-plan h3{font-size:1.05rem;font-weight:700;margin:0;color:var(--b-navy)}
+.b2b-reg .b-badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--b-primary-soft);color:var(--b-primary);width:fit-content}
+.b2b-reg .p-net .b-badge{background:var(--b-green-soft);color:var(--b-green)}
+.b2b-reg .b-plan ul{list-style:none;padding:0;margin:0;display:grid;gap:7px;font-size:.84rem;color:#3b4a60}
+.b2b-reg .b-plan li{display:flex;gap:8px}
+.b2b-reg .b-plan li i{color:var(--b-green);flex:none;margin-top:2px}
+.b2b-reg .b-calc{margin-top:auto;background:var(--b-bg);border:1px dashed #cfd8e6;border-radius:12px;padding:12px 14px;font-size:.82rem}
+.b2b-reg .b-calc .r{display:flex;justify-content:space-between;padding:3px 0;color:var(--b-muted)}
+.b2b-reg .b-calc .r b{color:var(--b-ink);font-weight:600}
+.b2b-reg .b-calc .r.tot{border-top:1px solid #d6dde9;margin-top:5px;padding-top:7px;color:var(--b-navy);font-weight:700}
+.b2b-reg .b-calc .r.tot b{color:var(--b-green);font-weight:800}
+.b2b-reg .b-calc .r.neg b{color:var(--b-red)}
+.b2b-reg .b-calc .r.sub{font-size:.76rem;padding:1px 0 1px 10px}
+.b2b-reg .b-calc .r.add b{color:var(--b-amber)}
+.b2b-reg .b-select-btn{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.85rem;font-weight:600;padding:9px;border-radius:10px;background:var(--b-primary-soft);color:var(--b-primary);transition:.2s}
+.b2b-reg .b-plan:hover .b-select-btn{background:var(--b-primary);color:#fff}
+.b2b-reg .b-plan.is-selected .b-select-btn{background:var(--b-primary);color:#fff}
+.b2b-reg .b-plan-error{display:none;color:var(--b-red);font-size:.83rem;margin:-22px 0 26px;align-items:center;gap:6px}
+.b2b-reg .b-plan-error.show{display:flex}
+.b2b-reg .b-plans.has-error .b-plan:not(.is-selected){border-color:#f0b4b4}
+
+/* Form */
+.b2b-reg .b-form-card{background:#fff;border:1px solid var(--b-line);border-radius:20px;padding:28px;box-shadow:var(--b-shadow)}
+.b2b-reg .b-fs-title{font-size:.95rem;font-weight:700;color:var(--b-navy);margin:6px 0 16px;display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--b-line)}
+.b2b-reg .b-fs-title i{color:var(--b-primary)}
+.b2b-reg .b-fs-title:not(:first-child){margin-top:26px}
+.b2b-reg .b-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.b2b-reg .b-field{margin-bottom:16px;min-width:0}
+.b2b-reg .b-field.full{grid-column:1/-1}
+.b2b-reg label.b-label{display:block;font-size:.8rem;font-weight:600;color:#2c3b52;margin-bottom:6px}
+.b2b-reg .b-label .req{color:var(--b-red)} .b2b-reg .b-label .opt{color:var(--b-muted);font-weight:400}
+.b2b-reg .b-input,.b2b-reg .b-select{width:100%;height:46px;border:1.5px solid var(--b-line);border-radius:11px;padding:0 14px;font:inherit;font-size:.92rem;color:var(--b-ink);background:#fff;transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none}
+.b2b-reg .b-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m1 1 5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.b2b-reg .b-input::placeholder{color:#9aa7b8}
+.b2b-reg .b-input:hover,.b2b-reg .b-select:hover{border-color:#c4cfdf}
+.b2b-reg .b-input:focus,.b2b-reg .b-select:focus{outline:none;border-color:var(--b-primary);box-shadow:0 0 0 4px rgba(31,94,255,.12)}
+.b2b-reg .b-field.has-error .b-input,.b2b-reg .b-field.has-error .b-select{border-color:var(--b-red);background-color:#fffafa}
+.b2b-reg .b-field.has-error .b-input:focus{box-shadow:0 0 0 4px rgba(217,58,58,.12)}
+.b2b-reg .b-err{display:none;color:var(--b-red);font-size:.78rem;margin-top:5px}
+.b2b-reg .b-field.has-error .b-err{display:block}
+.b2b-reg .b-phone{display:grid;grid-template-columns:128px 1fr;gap:8px}
+.b2b-reg .b-pw{position:relative}
+.b2b-reg .b-pw .b-input{padding-right:46px}
+.b2b-reg .b-pw button{position:absolute;right:4px;top:4px;height:38px;width:38px;border:0;background:transparent;color:var(--b-muted);border-radius:8px}
+.b2b-reg .b-pw button:hover{background:var(--b-bg);color:var(--b-ink)}
+.b2b-reg .b-meter{height:4px;background:var(--b-line);border-radius:4px;margin-top:8px;overflow:hidden}
+.b2b-reg .b-meter span{display:block;height:100%;width:0;transition:width .25s,background .25s}
+.b2b-reg .b-hint{font-size:.75rem;color:var(--b-muted);margin-top:5px}
+.b2b-reg .b-model-display{display:flex;align-items:center;gap:10px;height:46px;border:1.5px dashed #cdd6e4;border-radius:11px;padding:0 14px;background:var(--b-bg);font-size:.92rem;color:var(--b-muted)}
+.b2b-reg .b-model-display.set{border-style:solid;border-color:#bcd0ff;background:var(--b-primary-soft);color:var(--b-primary);font-weight:600}
+.b2b-reg .b-model-display.set.net{border-color:#b6e3d1;background:var(--b-green-soft);color:var(--b-green)}
+.b2b-reg .b-model-display .chg{margin-left:auto;font-size:.78rem;font-weight:600;color:inherit;text-decoration:underline;cursor:pointer;background:none;border:0;padding:0}
+.b2b-reg .b-terms{background:var(--b-bg);border:1px solid var(--b-line);border-radius:12px;padding:14px 16px;font-size:.82rem;color:#3b4a60;margin-bottom:18px}
+.b2b-reg .b-terms h4{font-size:.82rem;font-weight:700;margin:0 0 8px;color:var(--b-navy);display:flex;gap:6px;align-items:center}
+.b2b-reg .b-terms ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.b2b-reg .b-check{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:#3b4a60}
+.b2b-reg .b-check input{width:18px;height:18px;margin-top:2px;accent-color:var(--b-primary);flex:none}
+.b2b-reg .b-check a{color:var(--b-primary);font-weight:600;text-decoration:none}
+.b2b-reg .b-check a:hover{text-decoration:underline}
+.b2b-reg .b-cta{width:100%;height:52px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--b-primary),#3f7bff);color:#fff;font-weight:700;font-size:1rem;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s,box-shadow .2s,opacity .2s;box-shadow:0 8px 20px rgba(31,94,255,.28)}
+.b2b-reg .b-cta:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 26px rgba(31,94,255,.34)}
+.b2b-reg .b-cta:disabled{opacity:.8;cursor:progress}
+.b2b-reg .b-spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:b-spin .7s linear infinite;display:none}
+.b2b-reg .b-cta.loading .b-spin{display:block}
+@keyframes b-spin{to{transform:rotate(360deg)}}
+.b2b-reg .b-alt{text-align:center;font-size:.88rem;color:var(--b-muted);margin:16px 0 0}
+.b2b-reg .b-alt a{color:var(--b-primary);font-weight:600;text-decoration:none}
+.b2b-reg .b-trust{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:20px;font-size:.78rem;color:var(--b-muted)}
+.b2b-reg .b-trust span{display:flex;align-items:center;gap:6px}
+.b2b-reg .b-trust i{color:var(--b-green)}
+.b2b-reg .b-form-error{display:none;background:#fdecec;color:var(--b-red);border-radius:10px;padding:10px 14px;font-size:.85rem;margin-top:14px}
+
+/* Success */
+.b2b-reg .b-success{display:none;text-align:center;padding:48px 24px;background:#fff;border:1px solid var(--b-line);border-radius:20px;box-shadow:var(--b-shadow)}
+.b2b-reg .b-success .ic{width:76px;height:76px;border-radius:50%;background:var(--b-green-soft);color:var(--b-green);display:grid;place-items:center;font-size:2.4rem;margin:0 auto 18px}
+.b2b-reg .b-success h2{font-size:1.5rem;font-weight:800;color:var(--b-navy)}
+.b2b-reg .b-success p{color:var(--b-muted);max-width:420px;margin:8px auto}
+.b2b-reg .b-summary{display:inline-grid;gap:6px;text-align:left;background:var(--b-bg);border-radius:12px;padding:14px 20px;margin:14px 0 22px;font-size:.88rem}
+.b2b-reg .b-summary b{color:var(--b-navy)}
+.b2b-reg .b-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:11px;font-weight:600;text-decoration:none;border:0;background:var(--b-primary);color:#fff}
+.b2b-reg .b-btn.ghost{background:transparent;color:var(--b-primary);border:1.5px solid var(--b-line);margin-left:6px}
+
+/* ---------- Preview ---------- */
+.b2b-reg .b-pv-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.b2b-reg .b-pv-label{font-size:.8rem;font-weight:600;color:var(--b-muted);display:flex;align-items:center;gap:7px}
+.b2b-reg .b-pv-label i{color:var(--b-primary)}
+.b2b-reg .b-toggle{display:inline-flex;background:#fff;border:1px solid var(--b-line);border-radius:99px;padding:4px;box-shadow:0 1px 2px rgba(15,30,60,.05)}
+.b2b-reg .b-toggle button{border:0;background:transparent;font:inherit;font-size:.82rem;font-weight:600;color:var(--b-muted);padding:7px 16px;border-radius:99px;transition:.2s}
+.b2b-reg .b-toggle button.active{background:var(--b-navy);color:#fff}
+.b2b-reg .b-pv-title{font-size:1.25rem;font-weight:800;color:var(--b-navy);letter-spacing:-.01em;margin:0 0 4px}
+.b2b-reg .b-pv-desc{font-size:.88rem;color:var(--b-muted);margin:0 0 16px;min-height:42px}
+.b2b-reg .b-window{background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(15,30,60,.16);border:1px solid #d9e1ee;overflow:hidden}
+.b2b-reg .b-chrome{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#f1f4f9;border-bottom:1px solid var(--b-line)}
+.b2b-reg .b-chrome i.d{width:10px;height:10px;border-radius:50%;background:#d3dae6}
+.b2b-reg .b-url{margin-left:10px;flex:1;background:#fff;border:1px solid var(--b-line);border-radius:7px;font-size:.72rem;color:var(--b-muted);padding:3px 10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.b2b-reg .b-mtabs{display:none;border-bottom:1px solid var(--b-line)}
+.b2b-reg .b-mtabs button{flex:1;border:0;background:#fff;padding:10px;font:inherit;font-size:.8rem;font-weight:600;color:var(--b-muted);border-bottom:2px solid transparent}
+.b2b-reg .b-mtabs button.active{color:var(--b-primary);border-bottom-color:var(--b-primary)}
+.b2b-reg .b-portal{display:none}
+.b2b-reg .b-portal.active{display:flex;animation:b-fade .3s ease}
+@keyframes b-fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.b2b-reg .b-side{width:148px;flex:none;background:var(--b-navy);color:#b8c4d8;padding:16px 10px;display:flex;flex-direction:column;gap:4px}
+.b2b-reg .b-side .brand{color:#fff;font-weight:700;font-size:.82rem;padding:2px 8px 14px;display:flex;align-items:center;gap:6px}
+.b2b-reg .b-side .brand small{display:block;font-weight:500;color:#8fa0bb;font-size:.66rem}
+.b2b-reg .b-nav{display:flex;align-items:center;gap:8px;font-size:.76rem;font-weight:500;padding:8px 10px;border-radius:8px;background:transparent;border:0;color:inherit;text-align:left;transition:.15s;width:100%}
+.b2b-reg .b-nav:hover{background:rgba(255,255,255,.07);color:#fff}
+.b2b-reg .b-nav.active{background:var(--b-primary);color:#fff}
+.b2b-reg .b-main{flex:1;min-width:0;padding:16px;background:#f8fafc}
+.b2b-reg .b-mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px}
+.b2b-reg .b-mh h4{font-size:.95rem;font-weight:700;margin:0;color:var(--b-navy)}
+.b2b-reg .b-mh .av{width:28px;height:28px;border-radius:50%;background:var(--b-primary-soft);color:var(--b-primary);display:grid;place-items:center;font-size:.8rem;flex:none}
+.b2b-reg .b-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.b2b-reg .b-stat{background:#fff;border:1px solid var(--b-line);border-radius:10px;padding:10px}
+.b2b-reg .b-stat small{display:block;font-size:.62rem;color:var(--b-muted);font-weight:500}
+.b2b-reg .b-stat strong{display:block;font-size:1rem;font-weight:800;color:var(--b-navy);margin:2px 0;white-space:nowrap}
+.b2b-reg .b-stat em{font-style:normal;font-size:.62rem;font-weight:600;color:var(--b-green)}
+.b2b-reg .b-panel{background:#fff;border:1px solid var(--b-line);border-radius:10px;padding:12px;margin-bottom:12px}
+.b2b-reg .b-panel h5{font-size:.74rem;font-weight:700;color:var(--b-navy);margin:0 0 10px;display:flex;justify-content:space-between}
+.b2b-reg .b-panel h5 span{color:var(--b-primary);font-weight:600}
+.b2b-reg .b-chart{display:flex;align-items:flex-end;gap:7px;height:70px}
+.b2b-reg .b-chart i{flex:1;background:linear-gradient(180deg,#5b8bff,#9db9ff);border-radius:4px 4px 0 0;display:block;transition:height .5s}
+.b2b-reg .b-chart i:nth-child(6){background:linear-gradient(180deg,var(--b-primary),#4a7aff)}
+.b2b-reg .b-tbl{width:100%;font-size:.7rem;border-collapse:collapse}
+.b2b-reg .b-tbl th{text-align:left;color:var(--b-muted);font-weight:600;padding:0 6px 6px;font-size:.64rem;text-transform:uppercase;letter-spacing:.04em}
+.b2b-reg .b-tbl td{padding:7px 6px;border-top:1px solid var(--b-line);color:#3b4a60;white-space:nowrap}
+.b2b-reg .b-tbl td:first-child{font-weight:600;color:var(--b-navy)}
+.b2b-reg .pill{padding:2px 8px;border-radius:99px;font-size:.62rem;font-weight:700}
+.b2b-reg .pill.ok{background:var(--b-green-soft);color:var(--b-green)}
+.b2b-reg .pill.pd{background:var(--b-amber-soft);color:var(--b-amber)}
+.b2b-reg .pill.bl{background:var(--b-primary-soft);color:var(--b-primary)}
+.b2b-reg .b-search{display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:6px;margin-bottom:12px}
+.b2b-reg .b-search div{background:#fff;border:1px solid var(--b-line);border-radius:8px;padding:7px 9px;font-size:.68rem;color:var(--b-muted);display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden}
+.b2b-reg .b-search button{background:var(--b-primary);color:#fff;border:0;border-radius:8px;padding:0 12px;font-size:.7rem;font-weight:600}
+.b2b-reg .b-hotel{display:flex;gap:10px;align-items:center}
+.b2b-reg .b-hotel .th{width:44px;height:44px;border-radius:9px;flex:none;background:linear-gradient(135deg,#3a62d6,#7aa2ff);display:grid;place-items:center;color:#fff}
+.b2b-reg .b-hotel .nm{flex:1;min-width:0;font-size:.74rem;font-weight:700;color:var(--b-navy)}
+.b2b-reg .b-hotel .nm small{display:block;font-weight:500;color:var(--b-muted);font-size:.64rem}
+.b2b-reg .b-hotel .pr{text-align:right;font-size:.62rem;color:var(--b-muted)}
+.b2b-reg .b-hotel .pr b{display:block;font-size:.9rem;color:var(--b-navy)}
+.b2b-reg .b-pv-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.b2b-reg .b-pv-points div{background:rgba(255,255,255,.7);border:1px solid var(--b-line);border-radius:12px;padding:12px;font-size:.74rem;color:var(--b-muted)}
+.b2b-reg .b-pv-points i{color:var(--b-primary);font-size:1.1rem;display:block;margin-bottom:4px}
+.b2b-reg .b-pv-points b{color:var(--b-navy);display:block;font-size:.8rem}
+
+.b2b-reg .b-pill-note{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:var(--b-muted);background:#fff;border:1px solid var(--b-line);border-radius:99px;padding:4px 12px;margin-bottom:10px}
+.b2b-reg .b-portal.active{flex-direction:column}
+.b2b-reg .b-appbar{display:flex;align-items:center;gap:10px;background:#142a62;color:#fff;padding:12px 16px;font-size:.82rem}
+.b2b-reg .b-appbar .mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#1aa6d6,#2f6bff);display:grid;place-items:center;font-size:.85rem}
+.b2b-reg .b-appbar b{font-weight:700}
+.b2b-reg .b-appbar .pn{color:#b9c6e4}
+.b2b-reg .b-appbar .sep{width:1px;height:16px;background:#3d5190}
+.b2b-reg .b-appbar .co{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b2b-reg .b-appbar .av{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#2c427f;display:grid;place-items:center;font-size:.68rem;font-weight:700;flex:none}
+.b2b-reg .b-body{display:flex;min-height:380px}
+.b2b-reg .b-side{background:#142a62;padding:10px 8px 20px}
+.b2b-reg .b-nav{font-size:.78rem;color:#dbe3f5;border:1px solid transparent}
+.b2b-reg .b-nav.active{background:#26418a;border-color:#4a68b8}
+.b2b-reg .b-main{background:#f3f5fa}
+.b2b-reg .b-mh h4{font-size:1rem}
+.b2b-reg .b-mh p{margin:2px 0 0;font-size:.7rem;color:var(--b-muted)}
+.b2b-reg .b-stats.two{grid-template-columns:1fr 1fr}
+.b2b-reg .b-stat{display:flex;gap:10px;align-items:center;padding:12px}
+.b2b-reg .b-stat .ic{width:34px;height:34px;border-radius:9px;background:var(--b-primary-soft);color:var(--b-primary);display:grid;place-items:center;flex:none;font-size:.95rem}
+.b2b-reg .b-stat .ic.g{background:var(--b-green-soft);color:var(--b-green)}
+.b2b-reg .b-stat strong{margin:0;line-height:1.2}
+.b2b-reg .b-stat small{font-size:.68rem}
+.b2b-reg .b-panel h5{flex-direction:column;font-size:.82rem}
+.b2b-reg .b-panel h5 small{font-weight:400;color:var(--b-muted);font-size:.68rem;margin-top:2px}
+.b2b-reg .b-tbl th{background:#f3f5fa}
+.b2b-reg .b-tbl .r{text-align:right}
+.b2b-reg .b-tbl td.lnk{color:var(--b-primary)}
+@media (max-width:1199.98px){.b2b-reg .b-side{width:46px;padding:10px 6px}.b2b-reg .b-stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:991.98px){.b2b-reg .b-side{width:150px}.b2b-reg .b-stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:767.98px){.b2b-reg .b-side{display:none}.b2b-reg .b-appbar .pn{display:none}.b2b-reg .b-body{min-height:0}}
+.b2b-reg .b-cm{display:flex;gap:12px;align-items:flex-start;background:var(--b-green-soft);border:1px solid #b6e3d1;border-radius:14px;padding:14px 16px;margin-bottom:24px;font-size:.88rem;color:#14533c}
+.b2b-reg .b-cm[hidden]{display:none}
+.b2b-reg .b-cm i{font-size:1.3rem;color:var(--b-green);margin-top:1px}
+.b2b-reg .b-cm b{display:block;color:#0d3d2b}
+.b2b-reg .b-activate{margin-bottom:8px}
+.b2b-reg .b-activate .b-cta{margin-top:0}
+.b2b-reg .b-act-ok{display:flex;gap:12px;align-items:flex-start;background:var(--b-green-soft);border:1px solid #b6e3d1;border-radius:14px;padding:16px;color:#14533c;font-size:.88rem}
+.b2b-reg .b-act-ok[hidden]{display:none}
+.b2b-reg .b-act-ok i{font-size:1.4rem;color:var(--b-green)}
+.b2b-reg .b-act-ok b{display:block;color:#0d3d2b}
+.b2b-reg .b-modal{position:fixed;inset:0;z-index:1050;display:flex;align-items:center;justify-content:center;padding:16px}
+.b2b-reg .b-modal[hidden]{display:none}
+.b2b-reg .b-modal-bg{position:absolute;inset:0;background:rgba(11,31,58,.55)}
+.b2b-reg .b-modal-box{position:relative;background:#fff;border-radius:20px;padding:28px;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 24px 60px rgba(11,31,58,.35)}
+.b2b-reg .b-modal-box h3{font-size:1.2rem;font-weight:800;color:var(--b-navy);margin:0 0 6px}
+.b2b-reg .b-modal-sub{font-size:.85rem;color:var(--b-muted);margin:0 0 18px}
+.b2b-reg .b-modal-sub b{color:var(--b-navy)}
+.b2b-reg .b-modal-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border:0;border-radius:8px;background:transparent;color:var(--b-muted)}
+.b2b-reg .b-modal-x:hover{background:var(--b-bg)}
+.b2b-reg .b-phone{display:grid;grid-template-columns:112px 1fr;gap:8px}
+.b2b-reg .b-field{margin-bottom:16px}
+.b2b-reg .b-field.has-error .b-input,.b2b-reg .b-field.has-error .b-select{border-color:var(--b-red)}
+.b2b-reg .b-field.has-error .b-err{display:block}
+.b2b-reg .b-appbar .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.b2b-reg .b-appbar .right .av{margin-left:0}
+.b2b-reg .b-appbar .bell{width:28px;height:28px;border-radius:8px;background:#2c427f;display:grid;place-items:center;font-size:.75rem}
+.b2b-reg .b-appbar .who{line-height:1.1;font-size:.72rem}
+.b2b-reg .b-appbar .who small{display:block;color:#b9c6e4;font-size:.62rem}
+.b2b-reg .b-appbar .co b{font-weight:700}
+.b2b-reg .b-body{height:600px}
+.b2b-reg .b-side{overflow-y:auto;width:168px}
+.b2b-reg .b-main{overflow-y:auto}
+.b2b-reg .b-gh{position:relative}
+.b2b-reg .b-gh .chev{margin-left:auto;font-size:.65rem;transition:transform .2s}
+.b2b-reg .b-grp.open>.b-gh{background:#1d3777}
+.b2b-reg .b-grp.open .chev{transform:rotate(180deg)}
+.b2b-reg .b-subs{display:none;padding:3px 0 5px 4px}
+.b2b-reg .b-grp.open .b-subs{display:block}
+.b2b-reg .b-sub-item{display:block;width:100%;text-align:left;border:0;background:transparent;color:#c3cfe8;font-size:.72rem;font-weight:500;padding:6px 8px 6px 22px;border-radius:7px}
+.b2b-reg .b-sub-item:hover{color:#fff}
+.b2b-reg .b-sub-item.active{background:#2a56d6;color:#fff}
+.b2b-reg .b-acc{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:#7f93c0;padding:12px 10px 4px;font-weight:700}
+.b2b-reg .b-filters{display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:8px;align-items:end;background:#fff;border:1px solid var(--b-line);border-radius:10px;padding:10px;margin-bottom:10px}
+.b2b-reg .b-filters label{font-size:.58rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--b-muted);display:grid;gap:4px;min-width:0}
+.b2b-reg .b-filters input,.b2b-reg .b-filters select{height:30px;border:1px solid var(--b-line);border-radius:7px;padding:0 8px;font:inherit;font-size:.72rem;text-transform:none;letter-spacing:0;font-weight:400;color:var(--b-ink);background:#fff;width:100%;min-width:0}
+.b2b-reg .b-filters button{height:30px;border:1px solid var(--b-line);background:#f3f5fa;border-radius:7px;font-size:.68rem;font-weight:600;color:var(--b-muted);padding:0 10px}
+.b2b-reg .b-count{font-size:.72rem;color:var(--b-muted);margin-bottom:8px}
+.b2b-reg .b-count b{color:var(--b-ink)}
+.b2b-reg .b-prop{display:flex;background:#fff;border:1px solid var(--b-line);border-radius:10px;overflow:hidden;margin-bottom:10px}
+.b2b-reg .b-prop .th{width:92px;flex:none;display:grid;place-items:center;color:rgba(255,255,255,.9);font-size:1.6rem}
+.b2b-reg .b-prop .bd{flex:1;min-width:0;padding:10px 12px;display:flex;flex-direction:column;gap:5px}
+.b2b-reg .b-prop h6{margin:0;font-size:.84rem;font-weight:700;color:var(--b-navy)}
+.b2b-reg .b-prop .loc{font-size:.68rem;color:var(--b-muted)}
+.b2b-reg .b-prop .loc i{color:#e0457b}
+.b2b-reg .b-prop .meta{font-size:.66rem;color:var(--b-muted)}
+.b2b-reg .b-prop .meta b{color:var(--b-ink)}
+.b2b-reg .b-chips{display:flex;flex-wrap:wrap;gap:4px}
+.b2b-reg .b-chips span{font-size:.6rem;border:1px solid var(--b-line);border-radius:6px;padding:2px 6px;color:#3b4a60;background:#f8fafc}
+.b2b-reg .b-chips span.bd2{background:#eef0ff;border-color:#e0e3ff;color:#4338ca;font-weight:600;border-radius:99px}
+.b2b-reg .b-chips span.bd2.net{background:var(--b-green-soft);border-color:#b6e3d1;color:var(--b-green)}
+.b2b-reg .b-prop .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;flex-wrap:wrap;margin-top:2px}
+.b2b-reg .b-prop .pr{font-size:.6rem;color:var(--b-muted)}
+.b2b-reg .b-prop .pr b{display:block;font-size:.95rem;color:var(--b-navy);line-height:1.2}
+.b2b-reg .b-prop .acts{display:flex;gap:6px;flex-wrap:wrap}
+.b2b-reg .b-prop .acts button{border-radius:7px;font-size:.66rem;font-weight:600;padding:6px 10px;border:1px solid var(--b-line);background:#f3f5fa;color:var(--b-muted)}
+.b2b-reg .b-prop .acts button.pri{background:var(--b-primary);color:#fff;border-color:var(--b-primary)}
+.b2b-reg .b-empty{text-align:center;color:var(--b-muted);font-size:.8rem;padding:30px 0}
+@media (max-width:1199.98px){.b2b-reg .b-side{width:46px}.b2b-reg .b-subs,.b2b-reg .b-acc,.b2b-reg .b-gh .chev{display:none!important}.b2b-reg .b-appbar .who{display:none}}
+@media (max-width:991.98px){.b2b-reg .b-side{width:168px}.b2b-reg .b-grp.open .b-subs{display:block!important}.b2b-reg .b-acc{display:block!important}.b2b-reg .b-gh .chev{display:inline!important}}
+@media (max-width:767.98px){.b2b-reg .b-body{height:520px}.b2b-reg .b-filters{grid-template-columns:1fr 1fr}.b2b-reg .b-filters label:first-child{grid-column:1/-1}.b2b-reg .b-prop .th{width:64px}.b2b-reg .b-appbar .who,.b2b-reg .b-appbar .co{display:none}}
+.b2b-reg .b-window{container-type:inline-size;position:relative}
+.b2b-reg .b-toast{position:absolute;left:50%;bottom:16px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:5;background:var(--b-navy);color:#fff;font-size:.74rem;font-weight:500;padding:9px 14px;border-radius:10px;box-shadow:0 8px 24px rgba(11,31,58,.3);transition:.25s;max-width:90%;text-align:center}
+.b2b-reg .b-toast.show{opacity:1;transform:translate(-50%,0)}
+.b2b-reg .b-side .b-nav{white-space:nowrap}
+.b2b-reg .b-sub-item{white-space:normal;line-height:1.3}
+.b2b-reg .b-prop .th{min-height:100%}
+@container (max-width:760px){
+  .b-side{width:46px!important;padding:10px 6px!important}
+  .b-nav span,.b-subs,.b-acc,.b-gh .chev{display:none!important}
+  .b-nav{justify-content:center;padding:9px 0}
+  .b-appbar .who{display:none}
+}
+@container (max-width:520px){
+  .b-side{display:none!important}
+  .b-appbar .co{display:none}
+  .b-filters{grid-template-columns:1fr 1fr}
+  .b-filters label:first-child{grid-column:1/-1}
+  .b-filters button{grid-column:1/-1}
+  .b-prop{flex-direction:column}
+  .b-prop .th{width:100%;min-height:64px}
+  .b-prop .ft{flex-direction:column;align-items:stretch}
+  .b-prop .acts button{flex:1}
+  .b-main{padding:12px}
+}
+@container (min-width:761px){ .b-side{width:168px} }
+.b2b-reg .pd-back{border:0;background:none;color:var(--b-primary);font-size:.72rem;font-weight:600;padding:0;margin-bottom:6px}
+.b2b-reg .pd-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
+.b2b-reg .pd-head h4{font-size:1.1rem;font-weight:800;color:var(--b-navy);margin:0}
+.b2b-reg .pd-head p{margin:2px 0 0;font-size:.7rem;color:var(--b-muted)}
+.b2b-reg .pd-head .bg{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.b2b-reg .pd-gq{background:var(--b-primary);color:#fff;border:0;border-radius:8px;padding:7px 12px;font-size:.7rem;font-weight:600}
+.b2b-reg .pd-comm{background:#eef0ff;color:#4338ca;border-radius:99px;font-size:.66rem;font-weight:700;padding:4px 10px}
+.b2b-reg .pd-comm.net{background:var(--b-green-soft);color:var(--b-green)}
+.b2b-reg .pd-tabs{display:inline-flex;background:#fff;border:1px solid var(--b-line);border-radius:10px;padding:3px;margin-bottom:12px}
+.b2b-reg .pd-tabs button{border:0;background:transparent;font-size:.72rem;font-weight:600;color:var(--b-muted);padding:6px 12px;border-radius:8px}
+.b2b-reg .pd-tabs button.on{background:#fff;color:var(--b-primary);box-shadow:0 1px 4px rgba(15,30,60,.14)}
+.b2b-reg .pd-res{background:#fff;border:1px solid var(--b-line);border-radius:12px;overflow:hidden}
+.b2b-reg .pd-res>h5{background:#101727;color:#fff;margin:0;font-size:.82rem;font-weight:700;padding:12px 14px}
+.b2b-reg .pd-steps{display:flex;border-bottom:1px solid var(--b-line)}
+.b2b-reg .pd-steps span{flex:1;text-align:center;font-size:.68rem;font-weight:600;color:var(--b-muted);padding:9px 4px;border-bottom:2px solid transparent}
+.b2b-reg .pd-steps span.on{color:var(--b-primary);border-bottom-color:var(--b-primary)}
+.b2b-reg .pd-steps span.done{color:var(--b-green)}
+.b2b-reg .pd-bd{padding:14px;font-size:.74rem}
+.b2b-reg .pd-info{background:#eaf0ff;border:1px solid #cfdcff;border-radius:8px;padding:8px 10px;margin-bottom:12px;font-size:.7rem}
+.b2b-reg .pd-lbl{font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--b-muted);margin:0 0 4px;display:block}
+.b2b-reg .pd-sec{font-size:.72rem;font-weight:800;text-transform:uppercase;color:var(--b-navy);margin:12px 0 6px}
+.b2b-reg .pd-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.b2b-reg .pd-in{width:100%;height:32px;border:1px solid var(--b-line);border-radius:8px;padding:0 9px;font:inherit;font-size:.74rem;background:#fff;color:var(--b-ink)}
+.b2b-reg .pd-in.err{border-color:var(--b-red)}
+.b2b-reg .pd-hint{font-size:.64rem;color:var(--b-muted);margin-top:3px}
+.b2b-reg .pd-hint.err{color:var(--b-red)}
+.b2b-reg .pd-rm{border:1px solid var(--b-line);border-radius:10px;padding:10px;display:grid;gap:8px}
+.b2b-reg .pd-rm-top{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
+.b2b-reg .pd-rm-top>div{flex:1;min-width:110px}
+.b2b-reg .pd-add{border:1px dashed #b9c7e6;background:#f6f9ff;color:var(--b-primary);border-radius:8px;height:32px;padding:0 12px;font-size:.7rem;font-weight:600}
+.b2b-reg .pd-added{display:flex;justify-content:space-between;align-items:center;background:#f3f5fa;border-radius:8px;padding:6px 10px;font-size:.7rem}
+.b2b-reg .pd-added button{border:0;background:none;color:var(--b-red);font-size:.9rem}
+.b2b-reg .pd-ft{display:flex;justify-content:space-between;gap:8px;padding:12px 14px;border-top:1px solid var(--b-line);background:#fbfcfe}
+.b2b-reg .pd-btn{border-radius:8px;border:1px solid var(--b-line);background:#f3f5fa;color:var(--b-muted);font-size:.72rem;font-weight:600;padding:8px 14px}
+.b2b-reg .pd-btn.pri{background:var(--b-primary);border-color:var(--b-primary);color:#fff;margin-left:auto}
+.b2b-reg .pd-tbl{width:100%;border-collapse:collapse;font-size:.72rem}
+.b2b-reg .pd-tbl td{padding:6px 0;border-bottom:1px solid var(--b-line)}
+.b2b-reg .pd-tbl td:last-child{text-align:right;font-weight:600}
+.b2b-reg .pd-tbl tr.tot td{border:0;font-size:.82rem;font-weight:800;color:var(--b-navy)}
+.b2b-reg .pd-tbl tr.cm td{color:var(--b-green);font-weight:700;border:0}
+.b2b-reg .pd-ok{text-align:center;padding:26px 14px}
+.b2b-reg .pd-ok i{font-size:2.2rem;color:var(--b-green)}
+.b2b-reg .pd-ok b{display:block;font-size:.95rem;color:var(--b-navy);margin:6px 0 2px}
+.b2b-reg .pd-gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:80px 80px;gap:6px;margin-bottom:10px;border-radius:12px;overflow:hidden}
+.b2b-reg .pd-gal div{display:grid;place-items:end start;padding:8px;color:#fff;font-size:.66rem;font-weight:600;position:relative}
+.b2b-reg .pd-gal div:first-child{grid-row:1/3}
+.b2b-reg .pd-gal i{position:absolute;inset:0;display:grid;place-items:center;font-size:1.4rem;opacity:.5}
+.b2b-reg .pd-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.b2b-reg .pd-3 div,.b2b-reg .pd-card{background:#fff;border:1px solid var(--b-line);border-radius:10px;padding:10px}
+.b2b-reg .pd-3 small{display:block;font-size:.58rem;text-transform:uppercase;color:var(--b-muted)}
+.b2b-reg .pd-3 b{font-size:.9rem;color:var(--b-navy)}
+.b2b-reg .pd-card{margin-bottom:10px}
+.b2b-reg .pd-card h6{font-size:.76rem;font-weight:800;color:var(--b-navy);margin:0 0 8px}
+.b2b-reg .pd-card p{margin:0;font-size:.7rem;color:#3b4a60}
+.b2b-reg .pd-chips{display:flex;flex-wrap:wrap;gap:5px}
+.b2b-reg .pd-chips span{font-size:.62rem;border:1px solid #cfe3dc;background:#f2faf7;color:#14533c;border-radius:99px;padding:3px 8px}
+.b2b-reg .pd-chips.act span{border-color:#f0dfc0;background:#fdf6e8;color:#7a5410}
+.b2b-reg .pd-pol{display:flex;justify-content:space-between;font-size:.7rem;padding:5px 0;border-bottom:1px solid var(--b-line)}
+.b2b-reg .pd-pol:last-child{border:0}
+.b2b-reg .pd-pol b{color:var(--b-navy)}
+@container (max-width:520px){ .pd-row{grid-template-columns:1fr} .pd-3{grid-template-columns:1fr 1fr} .pd-gal{grid-template-rows:60px 60px} }
+.b2b-reg .b-network{position:relative;overflow:hidden;background:linear-gradient(120deg,#0b1f3a 0%,#173a7a 55%,#1f5eff 130%);color:#fff;border-radius:18px;padding:22px 24px;margin:-6px 0 26px;box-shadow:0 14px 34px rgba(31,94,255,.22)}
+.b2b-reg .b-network::before,.b2b-reg .b-network::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.b2b-reg .b-network::before{width:220px;height:220px;right:-60px;top:-90px}
+.b2b-reg .b-network::after{width:140px;height:140px;right:90px;bottom:-80px;background:rgba(255,255,255,.05)}
+.b2b-reg .nw-top{display:flex;align-items:center;gap:20px;position:relative;z-index:1}
+.b2b-reg .nw-num{flex:none;text-align:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 16px;backdrop-filter:blur(4px)}
+.b2b-reg .nw-num b{display:block;font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1;background:linear-gradient(180deg,#fff,#bcd2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.b2b-reg .nw-num span{font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#bcd0f5}
+.b2b-reg .nw-txt h2{font-size:1.2rem;font-weight:800;margin:0 0 4px;letter-spacing:-.01em;color:#fff}
+.b2b-reg .nw-txt p{margin:0;font-size:.86rem;color:#cdd9f2;line-height:1.5}
+.b2b-reg .nw-bot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);position:relative;z-index:1}
+.b2b-reg .nw-av{display:flex}
+.b2b-reg .nw-av span{width:32px;height:32px;border-radius:50%;border:2px solid #17356f;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:#fff;margin-left:-8px}
+.b2b-reg .nw-av span:first-child{margin-left:0}
+.b2b-reg .nw-av span.more{background:#fff;color:var(--b-primary)}
+.b2b-reg .nw-pills{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.b2b-reg .nw-pills li{display:flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:6px 12px}
+.b2b-reg .nw-pills i{color:#7fe3b5}
+@media (max-width:575.98px){.b2b-reg .nw-top{flex-direction:column;align-items:flex-start;gap:14px}.b2b-reg .b-network{padding:18px}}
+/* Responsive */
+@media (max-width:1199.98px){
+  .b2b-reg .b-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .b2b-reg .b-side{width:46px;padding:12px 6px}
+  .b2b-reg .b-side .brand span,.b2b-reg .b-nav span{display:none}
+  .b2b-reg .b-nav{justify-content:center;padding:9px 0}
+  .b2b-reg .b-stats{grid-template-columns:repeat(2,1fr)}
+  .b2b-reg .b-pv-points{grid-template-columns:1fr}
+}
+@media (max-width:991.98px){
+  .b2b-reg .b-grid{grid-template-columns:1fr}
+  .b2b-reg .b-left{max-width:none;padding:24px 20px 40px}
+  .b2b-reg .b-right{border-left:0;border-top:1px solid var(--b-line);padding:32px 16px 40px}
+  .b2b-reg .b-right-inner{position:static;max-width:720px;margin:0 auto}
+  .b2b-reg .b-side{width:148px}
+  .b2b-reg .b-side .brand span,.b2b-reg .b-nav span{display:inline}
+  .b2b-reg .b-nav{justify-content:flex-start;padding:8px 10px}
+  .b2b-reg .b-stats{grid-template-columns:repeat(4,1fr)}
+  .b2b-reg .b-pv-points{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:767.98px){
+  .b2b-reg .b-plans{grid-template-columns:1fr}
+  .b2b-reg .b-form-card{padding:20px 16px}
+  .b2b-reg .b-row{grid-template-columns:1fr;gap:0}
+  .b2b-reg .b-toggle{display:none}
+  .b2b-reg .b-mtabs{display:flex}
+  .b2b-reg .b-side{display:none}
+  .b2b-reg .b-stats{grid-template-columns:repeat(2,1fr)}
+  .b2b-reg .b-pv-points{grid-template-columns:1fr}
+  .b2b-reg .b-tbl .hide-sm{display:none}
+  .b2b-reg .b-search{grid-template-columns:1fr 1fr}
+  .b2b-reg .b-search div:first-child{grid-column:1/-1}
+  .b2b-reg .b-search button{padding:8px}
+  .b2b-reg .b-phone{grid-template-columns:112px 1fr}
+  .b2b-reg .b-plan-error{margin-top:-22px}
+}
+@media (prefers-reduced-motion:reduce){.b2b-reg *{animation:none!important;transition:none!important}}
+/* ===== Desktop: fit everything in one screen (no scroll) ===== */
+@media (min-width:992px){
+  .b2b-reg .b-left{padding:16px clamp(20px,3vw,48px) 16px}
+  .b2b-reg .b-logo{height:46px}
+  .b2b-reg .b-top{margin-bottom:10px}
+  .b2b-reg .b-network{padding:12px 16px;margin:0 0 14px;border-radius:14px}
+  .b2b-reg .nw-top{gap:14px}
+  .b2b-reg .nw-num{padding:7px 12px}
+  .b2b-reg .nw-num b{font-size:1.4rem}
+  .b2b-reg .nw-txt p{font-size:.82rem}
+  .b2b-reg .nw-bot{margin-top:10px;padding-top:10px}
+  .b2b-reg .nw-av span{width:26px;height:26px;font-size:.56rem}
+  .b2b-reg .nw-pills li{font-size:.68rem;padding:4px 10px}
+  .b2b-reg .b-eyebrow{margin-bottom:8px}
+  .b2b-reg .b-plans{gap:12px;margin-bottom:14px}
+  .b2b-reg .b-plan{padding:14px;gap:7px;display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto 1fr auto auto;column-gap:10px;align-content:start}
+  .b2b-reg .b-plan>*{grid-column:1/-1}
+  .b2b-reg .b-plan .b-plan-check{position:absolute}
+  .b2b-reg .b-plan .b-plan-icon{grid-column:1;grid-row:1/3;width:34px;height:34px;font-size:1rem}
+  .b2b-reg .b-plan h3{grid-column:2;grid-row:1;font-size:.98rem;align-self:end}
+  .b2b-reg .b-plan .b-badge{grid-column:2;grid-row:2;align-self:start}
+  .b2b-reg .b-plan ul{gap:4px;font-size:.78rem;margin-top:4px}
+  .b2b-reg .b-calc{font-size:.76rem;padding:8px 11px;margin-top:0}
+  .b2b-reg .b-calc .r{padding:1px 0}
+  .b2b-reg .b-select-btn{padding:7px;font-size:.8rem}
+  .b2b-reg .b-plan-error{margin:-6px 0 10px}
+  .b2b-reg .b-activate .b-cta{height:44px}
+  .b2b-reg .b-activate .b-alt{margin-top:8px;font-size:.78rem}
+  .b2b-reg .b-trust{display:none}
+  .b2b-reg .b-right{padding-top:20px;padding-bottom:20px}
+  .b2b-reg .b-right-inner{top:16px}
+  .b2b-reg .b-pv-desc{min-height:0;margin-bottom:10px}
+  .b2b-reg .b-pv-title{font-size:1.1rem}
+  .b2b-reg .b-body{height:clamp(340px,calc(100vh - 290px),600px)}
+  .b2b-reg .b-pv-points{margin-top:12px}
+}
+@media (min-width:992px) and (max-height:900px){
+  .b2b-reg .nw-bot,.b2b-reg .b-eyebrow,.b2b-reg .b-activate .b-alt,.b2b-reg .b-pv-points{display:none}
+  .b2b-reg .b-logo{height:40px}
+  .b2b-reg .b-plan ul{font-size:.74rem;gap:3px}
+  .b2b-reg .b-body{height:clamp(340px,calc(100vh - 250px),600px)}
+}
+@media (min-width:992px) and (max-height:780px){
+  
+  .b2b-reg .b-network{padding:9px 14px;margin-bottom:10px}
+}
+/* ===== Desktop: right preview fits exactly one screen ===== */
+@media (min-width:992px){
+  .b2b-reg .b-right{padding:16px clamp(16px,2.2vw,36px)}
+  .b2b-reg .b-right-inner{position:sticky;top:16px;height:calc(100vh - 32px);display:flex;flex-direction:column;min-height:0}
+  .b2b-reg .b-pv-head{margin-bottom:6px}
+  .b2b-reg .b-pv-title{margin:0 0 2px;font-size:1.05rem}
+  .b2b-reg .b-pv-desc{font-size:.8rem;margin:0 0 8px;line-height:1.4}
+  .b2b-reg .b-pill-note{margin-bottom:8px;align-self:flex-start}
+  .b2b-reg .b-window{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+  .b2b-reg .b-window .b-portal.active{flex:1 1 auto;min-height:0}
+  .b2b-reg .b-window .b-body{flex:1 1 auto;min-height:0;height:auto}
+  .b2b-reg .b-pv-points{flex:none;margin-top:10px;gap:8px}
+  .b2b-reg .b-pv-points div{padding:8px 10px;font-size:.7rem}
+  .b2b-reg .b-pv-points i{display:inline;margin-right:4px;font-size:.95rem}
+  .b2b-reg .b-pv-points b{display:inline;font-size:.76rem}
+}
+@media (min-width:992px) and (max-height:900px){
+  .b2b-reg .b-pv-points{display:grid}
+  .b2b-reg .b-body{height:auto}
+}
+@media (min-width:992px) and (max-height:800px){
+  .b2b-reg .b-pv-points,.b2b-reg .b-pv-desc{display:none}
+}
+/* ===== Clean & spacious final pass (desktop) ===== */
+@media (min-width:992px){
+  .b2b-reg .b-left{padding:28px clamp(24px,3.6vw,56px) 24px}
+  .b2b-reg .b-logo{height:52px}
+  .b2b-reg .b-top{margin-bottom:22px}
+  .b2b-reg .b-network{padding:16px 20px;margin:0 0 24px;border-radius:16px}
+  .b2b-reg .nw-top{gap:18px}
+  .b2b-reg .nw-num{padding:10px 16px}
+  .b2b-reg .nw-num b{font-size:1.7rem}
+  .b2b-reg .nw-txt p{font-size:.92rem;line-height:1.5}
+  .b2b-reg .b-plans{gap:18px;margin-bottom:22px}
+  .b2b-reg .b-plan{padding:20px;gap:12px;column-gap:12px}
+  .b2b-reg .b-plan .b-plan-icon{width:40px;height:40px;font-size:1.15rem}
+  .b2b-reg .b-plan h3{font-size:1.05rem}
+  .b2b-reg .b-plan ul{gap:9px;font-size:.84rem;margin-top:6px;line-height:1.45}
+  .b2b-reg .b-calc{font-size:.8rem;padding:12px 14px}
+  .b2b-reg .b-calc .r{padding:2px 0}
+  .b2b-reg .b-select-btn{padding:10px;font-size:.85rem}
+  .b2b-reg .b-activate .b-cta{height:52px}
+  .b2b-reg .b-activate .b-alt{margin-top:12px;font-size:.82rem}
+  .b2b-reg .b-right{padding:24px clamp(20px,2.6vw,44px)}
+  .b2b-reg .b-right-inner{top:24px;height:calc(100vh - 48px)}
+  .b2b-reg .b-pv-head{margin-bottom:10px}
+  .b2b-reg .b-pv-title{font-size:1.25rem;margin:0 0 12px}
+  .b2b-reg .b-pill-note{margin-bottom:12px}
+}
+@media (min-width:992px) and (max-height:860px){
+  .b2b-reg .b-top{margin-bottom:14px}
+  .b2b-reg .b-logo{height:44px}
+  .b2b-reg .b-network{margin-bottom:16px;padding:12px 18px}
+  .b2b-reg .b-plans{margin-bottom:16px}
+  .b2b-reg .b-plan{padding:16px;gap:9px}
+  .b2b-reg .b-plan ul{gap:6px;font-size:.8rem}
+  .b2b-reg .b-activate .b-alt{display:none}
+}
+.b2b-reg .b-modal-prop{display:flex;align-items:center;gap:12px;background:var(--b-primary-soft);border:1px solid #cfdcff;border-radius:12px;padding:10px 14px;margin-bottom:12px}
+.b2b-reg .b-modal-prop>i{font-size:1.3rem;color:var(--b-primary)}
+.b2b-reg .b-modal-prop b{color:var(--b-navy)}
+.b2b-reg .b-modal-prop div b{display:block;font-size:.95rem}
+.b2b-reg .b-modal-prop div span{font-size:.78rem;color:var(--b-muted)}
+.b2b-reg .b-modal-prop div span b{display:inline;font-size:.78rem}
+.b2b-reg .nw-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#ffd98a;margin-bottom:6px}
+.b2b-reg .nw-txt h2 .hl{background:linear-gradient(90deg,#ffe29a,#ffb86b);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.b2b-reg .nw-prop{display:inline-flex;align-items:stretch;margin-top:12px;background:rgba(255,255,255,.96);border-radius:14px;box-shadow:0 8px 22px rgba(4,14,38,.35);overflow:hidden;max-width:100%}
+.b2b-reg .nw-prop .pi{display:grid;place-items:center;width:44px;background:linear-gradient(135deg,#1f5eff,#4b86ff);color:#fff;font-size:1.15rem;flex:none}
+.b2b-reg .nw-prop .pn{padding:8px 14px;min-width:0}
+.b2b-reg .nw-prop .pc{padding:8px 14px;border-left:1px dashed #cdd6e6;background:#f3f6fc;flex:none}
+.b2b-reg .nw-prop small{display:block;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a889f;line-height:1.2}
+.b2b-reg .nw-prop .pn b{display:block;color:var(--b-navy);font-size:1rem;font-weight:800;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b2b-reg .nw-prop .pc b{display:block;color:var(--b-primary);font-size:1rem;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums;line-height:1.25}
+@media (min-width:992px) and (max-height:860px){.b2b-reg .nw-eyebrow{display:none}.b2b-reg .nw-prop{margin-top:8px}.b2b-reg .nw-prop .pn,.b2b-reg .nw-prop .pc{padding:6px 12px}}
+</style>
+</head>
+<body class="m-0">
+<div class="b2b-reg">
+ <div class="b-grid">
+
+  <!-- ===================== LEFT: REGISTRATION ===================== -->
+  <main class="b-left">
+    <div class="b-top">
+      <a href="https://www.b2bstays.in" aria-label="B2BStays home">
+        <img class="b-logo" id="b-logo" src="https://www.eglobe-solutions.com/img/logo-dark.webp" alt="B2BStays"
+             onerror="this.style.display='none';document.getElementById('b-logo-fb').style.display='block'">
+        <span class="b-logo-fallback" id="b-logo-fb">B2B<span style="color:var(--b-primary)">Stays</span></span>
+      </a>
+    </div>
+
+    <section class="b-network" aria-label="Travel agent network">
+      <div class="nw-top">
+        <div class="nw-num"><b>8,000+</b><span>Travel Agents</span></div>
+        <div class="nw-txt">
+          <span class="nw-eyebrow"><i class="bi bi-stars"></i> More visibility · More bookings</span>
+          <h2 id="nw-title">Increase the visibility of <span class="hl" id="nw-hl">Hotel Pali</span> among our 8,000+ travel agent network</h2>
+          <p>Get your rooms in front of agents who book every day, and increase your bookings.</p>
+          <div class="nw-prop"><span class="pi"><i class="bi bi-building-check"></i></span><div class="pn"><small>Your property</small><b id="nw-hotel">Hotel Pali</b></div><span class="pc"><small>Property ID</small><b id="nw-code">15157</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="b-cm" id="b-cm" hidden>
+      <i class="bi bi-patch-check-fill"></i>
+      <div><b id="b-cm-title">You're already connected through our Channel Manager</b>
+      <span>Your details are pre-filled. Choose a plan and set a password to go live on B2BStays.</span></div>
+    </div>
+
+    <div id="b-form-wrap">
+      <div class="b-plans" id="b-plans" role="radiogroup" aria-label="Commercial plan">
+
+        <button type="button" class="b-plan p-comm" role="radio" aria-checked="false" data-plan="commissionable">
+          <span class="b-plan-check"><i class="bi bi-check-lg"></i></span>
+          <span class="b-plan-icon"><i class="bi bi-percent"></i></span>
+          <h3>Commissionable Model</h3>
+          <span class="b-badge">15% on confirmed bookings</span>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i>List your rooms and rates. B2BStays manages the booking process.</li>
+            <li><i class="bi bi-check-circle-fill"></i>Commission only on confirmed bookings, with no upfront payment.</li>
+            <li><i class="bi bi-check-circle-fill"></i>Of the 15%, 5% is eGlobe's platform fee and 10% goes to travel agents.</li>
+          </ul>
+          <div class="b-calc" aria-label="Commission example">
+            <div class="r"><span>Booking Value</span><b>₹10,000</b></div>
+            <div class="r neg"><span>Total Commission (15%)</span><b>− ₹1,500</b></div>
+            <div class="r sub"><span>↳ eGlobe platform fee (5%)</span><b>₹500</b></div>
+            <div class="r sub"><span>↳ Travel agent commission (10%)</span><b>₹1,000</b></div>
+            <div class="r tot"><span>Hotel Payable Amount</span><b>₹8,500</b></div>
+          </div>
+          <span class="b-select-btn"><span class="lbl">Select Plan</span> <i class="bi bi-arrow-right"></i></span>
+        </button>
+
+        <button type="button" class="b-plan p-net" role="radio" aria-checked="false" data-plan="net">
+          <span class="b-plan-check"><i class="bi bi-check-lg"></i></span>
+          <span class="b-plan-icon"><i class="bi bi-tag"></i></span>
+          <h3>Net Rate Model</h3>
+          <span class="b-badge">No fixed commission</span>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i>You provide net rates. B2BStays pays you the agreed net amount.</li>
+            <li><i class="bi bi-check-circle-fill"></i>B2BStays adds its markup on top of your net rate.</li>
+            <li><i class="bi bi-check-circle-fill"></i>Final selling price and markup are managed by B2BStays.</li>
+          </ul>
+          <div class="b-calc" aria-label="Net rate example">
+            <div class="r"><span>Hotel Net Rate</span><b>₹8,000</b></div>
+            <div class="r add"><span>+ B2BStays Markup</span><b>₹2,000</b></div>
+            <div class="r"><span>Final Selling Price</span><b>₹10,000</b></div>
+            <div class="r tot"><span>Hotelier Receives</span><b>₹8,000</b></div>
+          </div>
+          <span class="b-select-btn"><span class="lbl">Select Plan</span> <i class="bi bi-arrow-right"></i></span>
+        </button>
+      </div>
+      <div class="b-plan-error" id="b-plan-error"><i class="bi bi-exclamation-circle"></i> Please choose a commercial plan to continue.</div>
+
+      <div class="b-modal" id="b-modal" hidden>
+        <div class="b-modal-bg" data-close></div>
+        <form class="b-modal-box" id="b-act-form" novalidate role="dialog" aria-modal="true" aria-labelledby="b-modal-title">
+          <button type="button" class="b-modal-x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button>
+          <h3 id="b-modal-title">Request Activation</h3>
+          <div class="b-modal-prop"><i class="bi bi-building"></i><div><b id="m-hotel">Hotel Pali</b><span>Property ID <b id="m-code">15157</b></span></div></div>
+          <p class="b-modal-sub">Selected plan: <b id="b-modal-plan"></b>. Tell us who to contact and we'll activate your account.</p>
+          <div class="b-field"><label class="b-label" for="a-name">Contact Person Name <span class="req">*</span></label>
+            <input class="b-input" id="a-name" autocomplete="name" placeholder="Full name"><div class="b-err"></div></div>
+          <div class="b-field"><label class="b-label" for="a-email">Email ID <span class="req">*</span></label>
+            <input class="b-input" type="email" id="a-email" autocomplete="email" placeholder="you@yourhotel.com"><div class="b-err"></div></div>
+          <div class="b-field"><label class="b-label" for="a-phone">Phone Number <span class="req">*</span></label>
+            <div class="b-phone"><select class="b-select" id="a-cc" aria-label="Country code"><option value="+91">+91 IN</option><option value="+971">+971 AE</option><option value="+1">+1 US</option><option value="+44">+44 UK</option><option value="+65">+65 SG</option><option value="+66">+66 TH</option><option value="+60">+60 MY</option><option value="+62">+62 ID</option><option value="+94">+94 LK</option><option value="+977">+977 NP</option><option value="+880">+880 BD</option><option value="+960">+960 MV</option></select>
+            <input class="b-input" type="tel" id="a-phone" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210"></div><div class="b-err"></div></div>
+          <div class="b-form-error" id="a-error" role="alert"></div>
+          <button class="b-cta" type="submit" id="a-submit" style="margin-top:8px"><span class="b-spin"></span><span id="a-submit-text">Submit Request</span></button>
+        </form>
+      </div>
+
+      <div class="b-activate" id="b-activate">
+        <button class="b-cta" type="button" id="b-activate-btn"><span class="b-spin"></span><span id="b-activate-text">Request Activation</span><i class="bi bi-arrow-right"></i></button>
+        <p class="b-alt" id="b-activate-note">Select a plan above, then request activation. We'll ask for your contact details and set up your B2BStays account.</p>
+        <div class="b-act-ok" id="b-act-ok" hidden role="status"><i class="bi bi-check-circle-fill"></i><div><b>Activation request received</b><span id="b-act-msg"></span></div></div>
+      </div>
+
+      <div class="b-trust">
+        <span><i class="bi bi-shield-check"></i> Secure registration</span>
+        <span><i class="bi bi-lightning-charge"></i> Quick onboarding</span>
+        <span><i class="bi bi-people"></i> Trusted by travel partners</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== RIGHT: DASHBOARD PREVIEW ===================== -->
+  <aside class="b-right" aria-label="Platform preview">
+    <div class="b-right-inner">
+      <div class="b-pv-head">
+        <div class="b-pv-label"><i class="bi bi-window-sidebar"></i> Explore the B2BStays Platform – Interactive Preview</div>
+      </div>
+      <h2 class="b-pv-title" id="pv-title">Supplier Portal</h2>
+
+      <!-- ===== PREVIEW MODULE: replace the contents of .b-window with your original dashboard HTML if needed ===== -->
+      <div class="b-pill-note"><i class="bi bi-info-circle"></i> Illustrative preview · sample data</div>
+      <div class="b-window"><div class="b-toast" id="pv-toast" role="status"></div>
+        <div class="b-portal active" data-portal="agent">
+          <div class="b-appbar"><span class="mk"><i class="bi bi-buildings"></i></span><b>B2BStays</b><span class="pn">Travel Agent Portal</span><span class="sep"></span><span class="co">Welcome, <b>Lakshya Travels</b></span>
+            <span class="right"><span class="bell"><i class="bi bi-bell-fill"></i></span><span class="av">LT</span><span class="who"><b>aditya</b><small>Travel Agent</small></span></span></div>
+          <div class="b-body">
+          <nav class="b-side">
+            <button class="b-nav"><i class="bi bi-speedometer2"></i><span>Dashboard</span></button>
+            <div class="b-grp open"><button class="b-nav b-gh"><i class="bi bi-building"></i><span>Hotel Booking</span><i class="bi bi-chevron-down chev"></i></button>
+              <div class="b-subs"><button class="b-sub-item active">Search &amp; Book</button><button class="b-sub-item">My Bookings</button><button class="b-sub-item">Group Bookings</button></div></div>
+            <div class="b-grp"><button class="b-nav b-gh"><i class="bi bi-umbrella"></i><span>Packages</span><i class="bi bi-chevron-down chev"></i></button>
+              <div class="b-subs"><button class="b-sub-item">Hotel Packages</button><button class="b-sub-item">Package Bookings</button></div></div>
+            <button class="b-nav"><i class="bi bi-car-front"></i><span>Cab Booking</span></button>
+            <div class="b-grp"><button class="b-nav b-gh"><i class="bi bi-coin"></i><span>Finance</span><i class="bi bi-chevron-down chev"></i></button>
+              <div class="b-subs"><button class="b-sub-item">Commission &amp; Settlements</button><button class="b-sub-item">City Ledger</button><button class="b-sub-item">Reports</button></div></div>
+            <button class="b-nav"><i class="bi bi-bell"></i><span>Notifications</span></button>
+            <div class="b-acc">Account</div>
+            <button class="b-nav"><i class="bi bi-person"></i><span>My Profile</span></button>
+            <button class="b-nav"><i class="bi bi-gear"></i><span>Settings</span></button>
+          </nav>
+          <div class="b-main">
+            <div id="pv-listview"><div class="b-mh"><div><h4>Hotels available for booking</h4><p>Browse eGlobe partner properties and book directly for your clients</p></div></div>
+            <div class="b-filters">
+              <label>Property name<input id="pv-q" placeholder="Search by name"></label>
+              <label>City<select id="pv-city"><option value="">All cities</option></select></label>
+              <label>Star category<select id="pv-star"><option value="">Any</option><option>5</option><option>4</option><option>3</option></select></label>
+              <button type="button" id="pv-reset">Reset filters</button>
+            </div>
+            <div class="b-count"><b id="pv-count">8</b> properties found</div>
+            <div id="pv-list"></div></div><div id="pv-detail" hidden></div>
+          </div></div>
+        </div>
+      </div>
+      <!-- ===== /PREVIEW MODULE ===== -->
+
+    </div>
+  </aside>
+ </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+'use strict';
+const root = document.querySelector('.b2b-reg');
+const $  = (s,c=root)=>c.querySelector(s);
+const $$ = (s,c=root)=>Array.from(c.querySelectorAll(s));
+
+/* ---------------- Config & API layer (swap for real backend) ---------------- */
+const API = {
+  // Replace with: return fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(r=>r.json());
+  register(payload){
+    return new Promise(resolve=>setTimeout(()=>resolve({ok:true,reference:'B2B-'+Date.now().toString(36).toUpperCase()}),1600));
+  }
+};
+const PLANS = {
+  commissionable:{label:'Commissionable Model – 15%',cls:'',icon:'bi-percent',
+    terms:['15% commission is charged only on confirmed bookings.','Of the 15%, 5% is eGlobe\'s platform fee and the remaining 10% is the travel agents\' commission.','No upfront commission payment.','Example: ₹10,000 booking → ₹1,500 commission (₹500 platform fee + ₹1,000 agent commission) → ₹8,500 payable to your hotel.','Payment is made after commission deduction, as per settlement terms.']},
+  net:{label:'Net Rate Model',cls:'net',icon:'bi-tag',
+    terms:['You provide net rates; B2BStays pays the agreed net amount.','B2BStays adds its markup over your net rate; it manages the final selling price.','Example: ₹8,000 net + ₹2,000 markup → ₹10,000 selling price; you receive ₹8,000.','No fixed commission applies under this model.']}
+};
+const COUNTRIES=[['India','+91'],['United Arab Emirates','+971'],['United States','+1'],['United Kingdom','+44'],['Singapore','+65'],['Thailand','+66'],['Malaysia','+60'],['Indonesia','+62'],['Sri Lanka','+94'],['Nepal','+977'],['Bangladesh','+880'],['Maldives','+960'],['Saudi Arabia','+966'],['Qatar','+974'],['Oman','+968'],['Australia','+61'],['Canada','+1'],['Germany','+49'],['France','+33'],['Other','+']];
+
+/* ---------------- Plan selection ---------------- */
+const planBtns=$$('.b-plan');
+let selectedPlan='';
+function selectPlan(key){
+  selectedPlan=key;
+  planBtns.forEach(b=>{
+    const on=b.dataset.plan===key;
+    b.classList.toggle('is-selected',on); b.setAttribute('aria-checked',on);
+    $('.lbl',b).textContent=on?'Selected':'Select Plan';
+  });
+  $('#b-plans').classList.remove('has-error'); $('#b-plan-error').classList.remove('show');
+}
+planBtns.forEach(b=>b.addEventListener('click',()=>selectPlan(b.dataset.plan)));
+
+/* ---------------- Request activation ---------------- */
+const modal=$('#b-modal'), actForm=$('#b-act-form');
+const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const q0=new URLSearchParams(location.search);
+function openModal(){
+  $('#b-modal-plan').textContent=PLANS[selectedPlan].label;
+  if(!$('#a-name').value) $('#a-name').value=q0.get('name')||'';
+  if(!$('#a-email').value) $('#a-email').value=q0.get('email')||'';
+  if(!$('#a-phone').value) $('#a-phone').value=q0.get('phone')||'';
+  const cc=q0.get('cc'); if(cc&&[...$('#a-cc').options].some(o=>o.value===cc)) $('#a-cc').value=cc;
+  modal.hidden=false; document.body.style.overflow='hidden'; setTimeout(()=>$('#a-name').focus(),50);
+}
+function closeModal(){ modal.hidden=true; document.body.style.overflow=''; }
+modal.addEventListener('click',e=>{ if(e.target.hasAttribute('data-close')||e.target.closest('[data-close]')) closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!modal.hidden) closeModal(); });
+$('#b-activate-btn').addEventListener('click',()=>{
+  if(!selectedPlan){
+    $('#b-plans').classList.add('has-error'); $('#b-plan-error').classList.add('show');
+    $('#b-plans').scrollIntoView({behavior:'smooth',block:'center'}); return;
+  }
+  openModal();
+});
+const aRules={
+  'a-name':v=>v.trim().length<2?'Please enter the contact person name.':'',
+  'a-email':v=>!v.trim()?'Please enter your email ID.':!EMAIL.test(v.trim())?'Enter a valid email address.':'',
+  'a-phone':v=>{const d=v.replace(/[\s-]/g,'');return !d?'Please enter your phone number.':!/^\d{7,12}$/.test(d)?'Enter a valid phone number (7–12 digits).':'';}
+};
+function aCheck(id){const el=$('#'+id),f=el.closest('.b-field'),m=aRules[id](el.value);f.classList.toggle('has-error',!!m);$('.b-err',f).textContent=m;return !m;}
+Object.keys(aRules).forEach(id=>{const el=$('#'+id);el.addEventListener('blur',()=>aCheck(id));el.addEventListener('input',()=>{if(el.closest('.b-field').classList.contains('has-error'))aCheck(id);});});
+actForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(Object.keys(aRules).map(aCheck).includes(false)) return;
+  const btn=$('#a-submit');
+  const payload={businessModel:selectedPlan,contactName:$('#a-name').value.trim(),email:$('#a-email').value.trim().toLowerCase(),
+    mobile:$('#a-cc').value+$('#a-phone').value.replace(/[\s-]/g,''),hotel:HOTEL_NAME,propertyCode:PROPERTY_CODE,channelManagerId:q0.get('cm_id')||'',source:q0.get('source')||'channel-manager'};
+  $('#a-error').style.display='none'; btn.disabled=true; btn.classList.add('loading'); $('#a-submit-text').textContent='Sending request…';
+  try{
+    const res=await API.register(payload);
+    if(!res.ok) throw new Error(res.message||'Request failed');
+    closeModal();
+    $('#b-act-msg').textContent='Thanks '+payload.contactName+'. Plan: '+PLANS[selectedPlan].label+' · Reference '+res.reference+'. We will contact you at '+payload.email+' shortly.';
+    $('#b-activate-btn').style.display='none'; $('#b-activate-note').style.display='none'; $('#b-act-ok').hidden=false;
+  }catch(err){
+    const b=$('#a-error'); b.textContent=err.message||'Something went wrong. Please try again.'; b.style.display='block';
+  }finally{ btn.disabled=false; btn.classList.remove('loading'); $('#a-submit-text').textContent='Submit Request'; }
+});
+/* ---------------- Channel-manager deep link (?hotel=..&cm_id=..&plan=..) ---------------- */
+const qs=new URLSearchParams(location.search);
+const qsl={}; qs.forEach((v,k)=>{qsl[k.toLowerCase().replace(/[_\-\s]/g,'')]=v;});   // case/underscore-insensitive keys
+const HOTEL_NAME=(qsl.hotel||qsl.hotelname||qsl.property||qsl.propertyname||'Hotel Pali').trim().slice(0,80);   // demo default: Hotel Pali
+const PROPERTY_CODE=String(qsl.code||qsl.propertycode||qsl.propertyid||qsl.hotelcode||qsl.hotelid||'15157').trim().slice(0,20);   // demo default: 15157
+const CITY_NAME=(qsl.city||qsl.hotelcity||'Pali').trim().slice(0,40);
+{
+  $('#nw-hotel').textContent=HOTEL_NAME; $('#nw-code').textContent=PROPERTY_CODE; $('#m-hotel').textContent=HOTEL_NAME; $('#m-code').textContent=PROPERTY_CODE;
+  $('#nw-hl').textContent=HOTEL_NAME;
+  document.title=HOTEL_NAME+' | Join B2BStays';
+}
+if(PLANS[qs.get('plan')]) selectPlan(qs.get('plan'));
+/* ---------------- Preview: Agent Portal with dummy data ---------------- */
+const HOTELS=[
+ {n:'The Grandview Hotel',c:'New Delhi',s:5,r:4.6,rt:4,ci:'14:00',co:'12:00',p:8500,a:['Restaurant','Pool','Spa','Wi-Fi'],m:'comm',g:['#2f5bd8','#7aa2ff']},
+ {n:'Lakeview Resort',c:'Udaipur',s:4,r:4.4,rt:3,ci:'13:00',co:'11:00',p:6200,a:['Lake View','Restaurant','Pool'],m:'net',g:['#0f8f8a','#6fd3c6']},
+ {n:'Ensober Kainchi Dham',c:'Nainital',s:4,r:4.3,rt:3,ci:'12:00',co:'11:00',p:4800,a:['Restaurant','Lounge','Room Service 24 Hours'],m:'comm',g:['#8a5a3c','#d9a273']},
+ {n:'Heritage Haveli',c:'Jaipur',s:4,r:4.5,rt:5,ci:'12:00',co:'11:00',p:5400,a:['Heritage Stay','Restaurant','Wi-Fi'],m:'net',g:['#b4543a','#f0a27f']},
+ {n:'Sea Breeze Retreat',c:'Goa',s:4,r:4.2,rt:4,ci:'14:00',co:'11:00',p:7100,a:['Beachfront','Pool','Bar'],m:'comm',g:['#1f7fbf','#7fd0f0']},
+ {n:'Himalayan Crest',c:'Manali',s:3,r:4.0,rt:2,ci:'12:00',co:'10:00',p:3200,a:['Mountain View','Restaurant','Bonfire'],m:'net',g:['#4a6a8a','#a8c0da']},
+ {n:'Backwater Bliss',c:'Kochi',s:5,r:4.7,rt:6,ci:'14:00',co:'12:00',p:9300,a:['Spa','Pool','Houseboat','Wi-Fi'],m:'comm',g:['#2a8a5a','#86d9a8']},
+ {n:'City Comfort Inn',c:'Mumbai',s:3,r:3.9,rt:3,ci:'12:00',co:'11:00',p:3900,a:['Wi-Fi','Breakfast','Airport Transfer'],m:'net',g:['#5b4bb5','#a9a0ec']}
+];
+HOTELS.unshift({code:PROPERTY_CODE,n:HOTEL_NAME,c:CITY_NAME||'Your city',s:4,r:4.5,rt:3,ci:'14:00',co:'12:00',p:7500,a:['Restaurant','Wi-Fi','Parking'],m:'comm',g:['#1f5eff','#7aa2ff']});
+const inr=n=>'₹'+n.toLocaleString('en-IN');
+const cityEl=$('#pv-city'), qEl=$('#pv-q'), starEl=$('#pv-star');
+[...new Set(HOTELS.map(h=>h.c))].sort().forEach(c=>cityEl.insertAdjacentHTML('beforeend','<option>'+c+'</option>'));
+function renderHotels(){
+  const q=qEl.value.trim().toLowerCase(), city=cityEl.value, star=+starEl.value||0;
+  const list=HOTELS.filter(h=>(!q||h.n.toLowerCase().includes(q))&&(!city||h.c===city)&&(!star||h.s===star));
+  $('#pv-count').textContent=list.length;
+  $('#pv-list').innerHTML=list.length?list.map(h=>`
+   <div class="b-prop"><div class="th" style="background:linear-gradient(135deg,${h.g[0]},${h.g[1]})"><i class="bi bi-building"></i></div>
+    <div class="bd"><div><h6>${h.n} <span style="color:#e8a317;font-size:.66rem">${'★'.repeat(h.s)}</span></h6><div class="loc"><i class="bi bi-geo-alt-fill"></i> ${h.c} · <b>${h.r}</b>/5 guest rating</div></div>
+     <div class="meta"><b>${h.rt}</b> room types &nbsp; Check-in <b>${h.ci}</b> &nbsp; Check-out <b>${h.co}</b></div>
+     <div class="b-chips">${h.a.map(a=>'<span>✓ '+a+'</span>').join('')}<span class="bd2 ${h.m==='net'?'net':''}">${h.m==='net'?'Net Rate':'% Commission'}</span></div>
+     <div class="ft"><div class="pr">Starting from<b>${inr(h.p)}</b>${h.m==='net'?'Net rate':'Commission rate'} + taxes / night</div>
+      <div class="acts"><button type="button" class="pri" data-h="${HOTELS.indexOf(h)}" data-t="rates">Book This Property</button><button type="button" data-h="${HOTELS.indexOf(h)}" data-t="info">Property Information</button></div></div></div></div>`).join(''):'<div class="b-empty">No properties match your filters.</div>';
+}
+[qEl,cityEl,starEl].forEach(el=>el.addEventListener('input',renderHotels));
+$('#pv-reset').addEventListener('click',()=>{qEl.value='';cityEl.value='';starEl.value='';renderHotels();});
+renderHotels();
+$$('.b-gh').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+$$('.b-sub-item').forEach(s=>s.addEventListener('click',()=>{$$('.b-sub-item').forEach(x=>x.classList.remove('active'));s.classList.add('active');}));
+$$('.b-side > .b-nav').forEach(n=>n.addEventListener('click',()=>{$$('.b-side > .b-nav').forEach(x=>x.classList.remove('active'));n.classList.add('active');}));
+/* ---------------- Property detail (demo) ---------------- */
+const det=$('#pv-detail'), lv=$('#pv-listview'), mainEl=$('.b-main');
+const ADDR={'New Delhi':'Sector 12, Connaught Place, New Delhi - 110001','Udaipur':'Lake Pichola Road, Udaipur, Rajasthan - 313001','Nainital':'Mall Road, Nainital, Uttarakhand - 263001','Jaipur':'Amer Road, Jaipur, Rajasthan - 302002','Goa':'Candolim Beach Road, Goa - 403515','Manali':'Old Manali Road, Himachal Pradesh - 175131','Kochi':'Marine Drive, Kochi, Kerala - 682031','Mumbai':'Andheri East, Mumbai, Maharashtra - 400069'};
+const S={h:null,tab:'rates',step:1,rooms:[],ci:'2026-12-12',co:'2026-12-14',guest:{name:'',phone:'',email:''},err:'',done:null};
+const roomTypes=h=>[{n:'Standard Room',p:h.p},{n:'Deluxe Room',p:Math.round(h.p*1.3/100)*100},{n:'Executive Suite',p:Math.round(h.p*1.8/100)*100}].slice(0,Math.max(2,Math.min(3,h.rt)));
+const nightsOf=()=>Math.round((new Date(S.co)-new Date(S.ci))/864e5);
+const hid=h=>h.code||(15100+HOTELS.indexOf(h)*7+3);
+const rmLabel=r=>r.n+' · '+r.plan;
+function openDetail(i,tab){
+  Object.assign(S,{h:HOTELS[i],tab,step:1,rooms:[],err:'',done:null,guest:{name:'',phone:'',email:''}});
+  lv.hidden=true; det.hidden=false; renderDetail(); mainEl.scrollTop=0;
+}
+function closeDetail(){ det.hidden=true; lv.hidden=false; mainEl.scrollTop=0; }
+function renderDetail(){
+  const h=S.h, net=h.m==='net';
+  const head=`<button type="button" class="pd-back" data-a="back">← Back to results</button>
+   <div class="pd-head"><div><h4>${h.n}</h4><p>📍 ${h.c} · <span style="color:#e8a317">${'★'.repeat(h.s)}</span> · Property ID ${hid(h)}</p></div>
+   <div class="bg"><button type="button" class="pd-gq" data-a="toast">Group Quote</button><span class="pd-comm ${net?'net':''}">${net?'Net Rate':'15.00% Commission'}</span></div></div>
+   <div class="pd-tabs"><button type="button" class="${S.tab==='rates'?'on':''}" data-a="tab" data-v="rates">Rates &amp; Booking</button><button type="button" class="${S.tab==='info'?'on':''}" data-a="tab" data-v="info">Property Information</button></div>`;
+  det.innerHTML=head+(S.tab==='info'?infoHTML(h):ratesHTML(h));
+}
+function infoHTML(h){
+  const am=[...new Set([...h.a,'Front Desk','Complimentary Breakfast','Elevator','Restaurant','Coffee Shop','Room Service','Parking','Conference Facilities','Internet Access in rooms','Non Smoking'])];
+  return `<div class="pd-gal">${[h.g,['#8a5a3c','#d9a273'],['#4a6a8a','#a8c0da'],['#b4543a','#f0a27f'],['#2a8a5a','#86d9a8']].map((g,k)=>`<div style="background:linear-gradient(135deg,${g[0]},${g[1]})"><i class="bi bi-${k?'image':'building'}"></i>${k?'':'Standard Room – Comfort &amp; Affordability in '+h.c}</div>`).join('')}</div>
+  <div class="pd-3"><div><small>Check-in</small><b>${h.ci}</b></div><div><small>Check-out</small><b>${h.co}</b></div><div><small>Currency</small><b>INR</b></div></div>
+  <div class="pd-card"><h6>Hotel amenities</h6><div class="pd-chips">${am.map(a=>'<span>✓ '+a+'</span>').join('')}</div></div>
+  <div class="pd-card"><h6>Activities &amp; recreation</h6><div class="pd-chips act"><span>✓ Children Activities</span><span>✓ Fitness Center</span><span>✓ Swimming Pool</span><span>✓ Boating</span></div></div>
+  <div class="pd-card"><h6>Location</h6><p>${ADDR[h.c]||h.c}</p></div>
+  <div class="pd-card"><h6>Stay &amp; booking policy</h6><div class="pd-pol"><span>Check-in</span><b>${h.ci}</b></div><div class="pd-pol"><span>Check-out</span><b>${h.co}</b></div><div class="pd-pol"><span>Minimum adult age</span><b>12 years</b></div><div class="pd-pol"><span>Cancellation</span><b>Free up to 48 hrs</b></div></div>`;
+}
+function ratesHTML(h){
+  const steps=['Select Date + Rooms','Review Price','Guest Details + Submit'];
+  const bar=`<div class="pd-steps">${steps.map((s,k)=>`<span class="${S.step===k+1?'on':S.step>k+1?'done':''}">${s}</span>`).join('')}</div>`;
+  let body='',ft='';
+  if(S.done){
+    body=`<div class="pd-ok"><i class="bi bi-check-circle-fill"></i><b>Reservation submitted (demo)</b>Reference <b style="display:inline">${S.done}</b> for ${S.guest.name}.<br>This is a sample, no real booking was made.</div>`;
+    ft=`<div class="pd-ft"><button type="button" class="pd-btn" data-a="back">Back to results</button><button type="button" class="pd-btn pri" data-a="restart">New Reservation</button></div>`;
+  } else if(S.step===1){
+    const rt=roomTypes(h), n=nightsOf();
+    body=`<div class="pd-info">🔗 This booking will go through your mapped channel: <b>WhatsApp AI Channel</b></div>
+    <div class="pd-sec" style="margin-top:0">Select stay dates</div>
+    <div class="pd-row"><div><label class="pd-lbl">Check-in</label><input class="pd-in" type="date" id="d-ci" value="${S.ci}"></div><div><label class="pd-lbl">Check-out</label><input class="pd-in" type="date" id="d-co" value="${S.co}"></div></div>
+    <div class="pd-hint ${n<1||n>30?'err':''}">${n<1?'Check-out must be after check-in.':n>30?'Maximum 30 nights per booking.':n+' night(s) · Up to 30 night(s) per booking.'}</div>
+    <div class="pd-sec">Select rooms</div>
+    <div class="pd-rm"><div class="pd-rm-top"><div><label class="pd-lbl">Room type</label><select class="pd-in" id="d-rt">${rt.map((r,k)=>`<option value="${k}">${r.n} – ${inr(r.p)}</option>`).join('')}</select></div>
+     <div><label class="pd-lbl">Rate plan</label><select class="pd-in" id="d-rp"><option>EP</option><option>CP</option><option>MAP</option></select></div>
+     <button type="button" class="pd-add" data-a="add">+ Add Room</button></div>
+     ${S.rooms.map((r,k)=>`<div class="pd-added"><span>${rmLabel(r)} · ${inr(r.p)}/night</span><button type="button" data-a="rm" data-v="${k}" aria-label="Remove">✕</button></div>`).join('')}
+     <div class="pd-hint">${6-S.rooms.length} room(s) available on every night of this stay</div></div>
+    ${S.err?`<div class="pd-hint err" style="margin-top:8px">${S.err}</div>`:''}`;
+    ft=`<div class="pd-ft"><span></span><button type="button" class="pd-btn pri" data-a="next">Review Price →</button></div>`;
+  } else if(S.step===2){
+    const n=nightsOf(), sub=S.rooms.reduce((a,r)=>a+r.p*n,0), gst=Math.round(sub*.12), tot=sub+gst, net=h.m==='net';
+    body=`<div class="pd-sec" style="margin-top:0">Price breakdown · ${n} night(s)</div><table class="pd-tbl">
+     ${S.rooms.map(r=>`<tr><td>${rmLabel(r)} × ${n}</td><td>${inr(r.p*n)}</td></tr>`).join('')}
+     <tr><td>Taxes (GST 12%)</td><td>${inr(gst)}</td></tr><tr class="tot"><td>Total payable</td><td>${inr(tot)}</td></tr>
+     ${net?'':`<tr class="cm"><td>Your commission (15%)</td><td>${inr(Math.round(sub*.15))}</td></tr>`}</table>
+     <div class="pd-hint">${S.ci} → ${S.co}</div>`;
+    ft=`<div class="pd-ft"><button type="button" class="pd-btn" data-a="prev">← Back</button><button type="button" class="pd-btn pri" data-a="next">Guest Details →</button></div>`;
+  } else {
+    const g=S.guest;
+    body=`<div class="pd-sec" style="margin-top:0">Lead guest details</div>
+     <div class="pd-row"><div><label class="pd-lbl">Guest name</label><input class="pd-in ${S.err&&!g.name?'err':''}" id="g-name" value="${g.name}" placeholder="Full name"></div>
+     <div><label class="pd-lbl">Mobile</label><input class="pd-in ${S.err&&!g.phone?'err':''}" id="g-phone" value="${g.phone}" placeholder="+91 98765 43210"></div></div>
+     <div style="margin-top:10px"><label class="pd-lbl">Email (optional)</label><input class="pd-in" id="g-email" value="${g.email}" placeholder="guest@email.com"></div>
+     ${S.err?`<div class="pd-hint err" style="margin-top:8px">${S.err}</div>`:''}`;
+    ft=`<div class="pd-ft"><button type="button" class="pd-btn" data-a="prev">← Back</button><button type="button" class="pd-btn pri" data-a="submit">Submit Reservation</button></div>`;
+  }
+  return `<div class="pd-res"><h5>New Reservation</h5>${S.done?'':bar}<div class="pd-bd">${body}</div>${ft}</div>`;
+}
+$('#pv-list').addEventListener('click',e=>{const b=e.target.closest('button[data-h]');if(b)openDetail(+b.dataset.h,b.dataset.t);});
+det.addEventListener('change',e=>{
+  const id=e.target.id;
+  if(id==='d-ci'||id==='d-co'){ S[id==='d-ci'?'ci':'co']=e.target.value; S.err=''; renderDetail(); }
+});
+det.addEventListener('input',e=>{
+  const m={'g-name':'name','g-phone':'phone','g-email':'email'}[e.target.id]; if(m) S.guest[m]=e.target.value;
+});
+det.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]'); if(!b) return; const a=b.dataset.a;
+  if(a==='back') return closeDetail();
+  if(a==='toast') return pvToast('Group quotes are available after activation.');
+  if(a==='tab'){S.tab=b.dataset.v;}
+  if(a==='add'){const rt=roomTypes(S.h)[+$('#d-rt').value];if(S.rooms.length>=6){S.err='Only 6 rooms are available for this stay.';}else{S.rooms.push({n:rt.n,p:rt.p,plan:$('#d-rp').value});S.err='';}}
+  if(a==='rm') S.rooms.splice(+b.dataset.v,1);
+  if(a==='prev'){S.step--;S.err='';}
+  if(a==='next'){
+    const n=nightsOf();
+    if(S.step===1&&(n<1||n>30)) S.err='Please choose valid stay dates (1–30 nights).';
+    else if(S.step===1&&!S.rooms.length) S.err='Please add at least one room to continue.';
+    else {S.step++;S.err='';}
+  }
+  if(a==='submit'){
+    if(!S.guest.name.trim()||!S.guest.phone.trim()) S.err='Please enter the guest name and mobile number.';
+    else {S.done='AG-'+(2032+Math.floor(Math.random()*60));S.err='';}
+  }
+  if(a==='restart'){Object.assign(S,{step:1,rooms:[],done:null,err:'',guest:{name:'',phone:'',email:''}});}
+  renderDetail();
+});
+$$('.b-side .b-nav:not(.b-gh), .b-sub-item').forEach(n=>n.addEventListener('click',()=>{ if(!det.hidden) closeDetail(); }));
+let toastT;
+function pvToast(m){const el=$('#pv-toast');el.textContent=m;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2200);}
+
+$$('.b-side .b-nav:not(.b-gh), .b-sub-item').forEach(n=>n.addEventListener('click',()=>{if(!n.classList.contains('active')||n.classList.contains('b-nav'))pvToast('Demo preview only. Full portal opens after activation.');}));
+$('#pv-title').textContent='Travel Agent Portal';
+})();
+</script>
+</body>
+</html>
