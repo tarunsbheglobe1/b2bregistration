@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Create Your Account | B2BStays</title>
-<meta name="description" content="Register your hotel or travel business on B2BStays. Choose Commissionable or Net Rates and explore the Supplier and Agent portals.">
+<meta name="description" content="Register your property or travel business on B2BStays. Choose Commissionable or Non Commissionable and explore the Supplier and Agent portals.">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,10 +13,10 @@
    B2BStays Registration — all rules scoped under .b2b-reg
    ===================================================================== */
 .b2b-reg{
-  --b-navy:#0b1f3a; --b-ink:#14233b; --b-muted:#64748b; --b-line:#e3e8ef;
-  --b-bg:#f5f7fa; --b-card:#fff; --b-primary:#1f5eff; --b-primary-d:#1648cc;
-  --b-primary-soft:#eaf0ff; --b-green:#0f9d6b; --b-green-soft:#e6f6ef;
-  --b-amber:#d98a0b; --b-amber-soft:#fdf3df; --b-red:#d93a3a;
+  --b-navy:#12294a; --b-ink:#1f2937; --b-muted:#64748b; --b-line:#e3e8ef;
+  --b-bg:#f5f7fa; --b-card:#fff; --b-primary:#2f6fe0; --b-primary-d:#2455b8;
+  --b-primary-soft:#e8f0fe; --b-green:#12a37a; --b-green-soft:#e4f6ef;
+  --b-amber:#d9890b; --b-amber-soft:#fdf1d8; --b-red:#dc4a4a;
   --b-radius:16px; --b-shadow:0 1px 2px rgba(15,30,60,.05),0 8px 24px rgba(15,30,60,.06);
   font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   color:var(--b-ink); background:#fff; min-height:100vh; line-height:1.5;
@@ -24,8 +24,106 @@
 .b2b-reg *,.b2b-reg *::before,.b2b-reg *::after{box-sizing:border-box}
 .b2b-reg .b-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);min-height:100vh}
 .b2b-reg .b-left{padding:36px clamp(20px,4vw,64px) 56px;max-width:860px;width:100%;margin-left:auto}
-.b2b-reg .b-right{background:linear-gradient(160deg,#eef2f8,#e4ebf5);border-left:1px solid var(--b-line);padding:36px clamp(16px,2.5vw,40px)}
+.b2b-reg .b-right{background:linear-gradient(160deg,#eef3fb,#e3ebf7);border-left:1px solid var(--b-line);padding:36px clamp(16px,2.5vw,40px)}
 .b2b-reg .b-right-inner{position:sticky;top:28px}
+.b2b-reg .b-gal{background:#fff;border:1px solid var(--b-line);border-radius:14px;padding:18px}
+.b2b-reg .gal-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.b2b-reg .gal-head h3{margin:0;font-size:1rem;font-weight:700;color:var(--b-navy)}
+.b2b-reg .gal-soon{background:var(--b-amber-soft);color:var(--b-amber);font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:99px}
+.b2b-reg .gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.b2b-reg .gal-th{position:relative;padding:0;border:1px solid var(--b-line);border-radius:10px;overflow:hidden;background:#f3f6fb;cursor:zoom-in;transition:box-shadow .2s;aspect-ratio:16/10}
+.b2b-reg .gal-th:first-child{grid-column:1/-1;aspect-ratio:16/8.5}
+.b2b-reg .gal-th:hover{box-shadow:0 8px 22px rgba(15,30,60,.14)}
+.b2b-reg .gal-th img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.b2b-reg .gal-cap{position:absolute;left:10px;bottom:10px;background:rgba(11,31,58,.78);color:#fff;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:99px}
+.b2b-reg .gal-video{position:relative;display:block;width:100%;margin-top:14px;padding:0;border:1px solid var(--b-line);border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:16/8.5;background:linear-gradient(135deg,#12294a,#2f6fe0) center/cover no-repeat}
+.b2b-reg .gal-video .pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:46px;border-radius:12px;background:#f00;color:#fff;display:grid;place-items:center;font-size:2rem;box-shadow:0 4px 14px rgba(0,0,0,.35);transition:transform .2s}
+.b2b-reg .gal-video:hover .pl{transform:translate(-50%,-50%) scale(1.1)}
+.b2b-reg .gal-video .tx{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;text-align:left;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.b2b-reg .gal-video .tx b{display:block;font-size:.95rem}
+.b2b-reg .gal-video .tx small{opacity:.85;font-size:.75rem}
+.b2b-reg .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--b-navy);font-size:1.3rem;cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 16px rgba(0,0,0,.35);z-index:2}
+.b2b-reg .lb-nav:hover{background:var(--b-primary);color:#fff}
+.b2b-reg .lb-prev{left:18px}.b2b-reg .lb-next{right:18px}
+.b2b-reg .lb-count{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:#fff;font-size:.85rem;font-weight:600;background:rgba(0,0,0,.45);padding:4px 12px;border-radius:99px}
+.b2b-reg .b-lb.single .lb-nav,.b2b-reg .b-lb.single .lb-count{display:none}
+.b2b-reg .b-lb{position:fixed;inset:0;z-index:99999;background:rgba(5,12,25,.88);display:flex;align-items:center;justify-content:center;padding:40px 20px}
+.b2b-reg .b-lb[hidden]{display:none}
+.b2b-reg .lb-x{position:absolute;top:14px;right:18px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:var(--b-navy);font-size:1.1rem;cursor:pointer}
+.b2b-reg .lb-body{width:min(1200px,100%);max-height:100%;display:flex;justify-content:center}
+.b2b-reg .lb-body img{max-width:100%;max-height:calc(100vh - 80px);border-radius:10px;background:#fff}
+.b2b-reg .lb-body iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000}
+.b2b-reg .lb-soon{background:#fff;border-radius:14px;padding:40px 48px;text-align:center;color:var(--b-navy)}
+.b2b-reg .lb-soon i{font-size:2.4rem;color:var(--b-primary)}
+.b2b-reg textarea.b-input{height:auto;min-height:84px;padding-top:11px;resize:vertical;line-height:1.45}
+.b2b-reg .nw-ic{flex:none;width:68px;height:68px;border-radius:20px;background:linear-gradient(135deg,#2f6fe0,#5a92f0);color:#fff;display:grid;place-items:center;font-size:2rem;box-shadow:0 8px 20px rgba(47,111,224,.28)}
+.b2b-reg .nw-txt h2{font-size:1.45rem!important;font-weight:800;line-height:1.25!important;letter-spacing:-.015em}
+.b2b-reg .nw-txt h2 .hl{background:linear-gradient(90deg,#2f6fe0,#12a37a);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;white-space:normal}
+.b2b-reg .nw-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.b2b-reg .nw-tags span{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--b-navy);font-size:.76rem;font-weight:700;border-radius:99px;padding:5px 12px;box-shadow:0 1px 6px rgba(15,30,60,.08)}
+.b2b-reg .nw-tags i{color:var(--b-primary)}
+@media (max-width:575.98px){.b2b-reg .nw-ic{width:52px;height:52px;font-size:1.5rem;border-radius:15px}.b2b-reg .nw-txt h2{font-size:1.2rem!important}}/* ---- Fixed navigation bar (stays at top while scrolling) ---- */
+.b2b-reg header.eg-head{position:sticky;top:0;z-index:1000}
+@media (min-width:992px){
+  .b2b-reg .b-right-inner{top:113px;height:calc(100vh - 89px - 48px)}
+}
+/* ---- Clean layout: no divider lines, one continuous background ---- */
+.b2b-reg header.eg-head{border-bottom:0!important;box-shadow:none}
+.b2b-reg .b-right{background:transparent;border-left:0}
+.b2b-reg .eg-head{border-bottom:0}
+.b2b-reg .b-gal{border:0;box-shadow:0 2px 18px rgba(15,30,60,.07)}
+.b2b-reg .gal-th{border:0}
+.b2b-reg .gal-video{border:0}
+.b2b-reg .b-network{border:0}
+.b2b-reg .nw-prop{border:0}
+.b2b-reg .foot,.b2b-reg .b-left{border:0}
+.b2b-reg .b-plan{border:0;box-shadow:0 2px 18px rgba(15,30,60,.07)}
+.b2b-reg .b-plan:hover{box-shadow:0 6px 24px rgba(15,30,60,.12)}
+.b2b-reg .b-plan.is-selected{box-shadow:0 0 0 2px var(--b-primary),0 6px 24px rgba(47,111,224,.14)}
+.b2b-reg .b-plan h3{padding-right:34px}
+.b2b-reg .b-calc{border:0;background:#f4f7fc}
+.b2b-reg .b-calc .r.tot{border-top-color:#dfe6f2}
+/* ---- eGlobe site header ---- */
+.b2b-reg .eg-head{position:relative;z-index:50;background:#fff;border-bottom:1px solid var(--b-line)}
+.b2b-reg .eg-in{max-width:1280px;margin:0 auto;height:88px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.b2b-reg .eg-logo img{height:82px;display:block;margin:-4px 0}
+.b2b-reg .eg-nav{display:flex;align-items:center;gap:38px}
+.b2b-reg .eg-nav>a,.b2b-reg .eg-dd-b.eg-link,.b2b-reg .eg-nav .eg-dd-b{font:inherit;font-weight:700;font-size:.98rem;color:#1b2434;text-decoration:none;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:8px 0}
+.b2b-reg .eg-nav>a:hover,.b2b-reg .eg-nav .eg-dd-b:hover{color:var(--b-primary)}
+.b2b-reg .eg-nav .eg-dd-b i{font-size:.7rem}
+.b2b-reg .eg-right{display:flex;align-items:center;gap:14px}
+.b2b-reg .eg-login{font-weight:700;font-size:1rem;color:#0f4aa8;text-decoration:none;border:2px solid #0f4aa8;border-radius:99px;padding:9px 30px;transition:background .15s,color .15s}
+.b2b-reg .eg-login:hover{background:#0f4aa8;color:#fff}
+.b2b-reg .eg-burger{width:55px;height:55px;border-radius:14px;background:#f1f3f6;border:0;color:#1b2434;font-size:1.5rem;display:grid;place-items:center;cursor:pointer}
+.b2b-reg .eg-burger:hover{background:#e6eaf0}
+.b2b-reg .eg-dd{position:relative}
+.b2b-reg .eg-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--b-line);border-radius:14px;box-shadow:0 18px 44px rgba(15,30,60,.16);padding:20px 24px;gap:30px;z-index:60;min-width:200px}
+.b2b-reg .eg-dd.open>.eg-menu{display:flex}
+.b2b-reg .eg-menu .col{display:flex;flex-direction:column;gap:2px;min-width:170px}
+.b2b-reg .eg-menu h6{margin:0 0 6px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--b-muted);font-weight:800}
+.b2b-reg .eg-menu a{color:#1b2434;text-decoration:none;font-weight:600;font-size:.9rem;padding:7px 10px;border-radius:8px;white-space:nowrap}
+.b2b-reg .eg-menu a:hover{background:var(--b-primary-soft);color:var(--b-primary)}
+.b2b-reg .eg-menu .new{font-size:.6rem;background:#f0a93b;color:#fff;border-radius:99px;padding:1px 7px;margin-left:4px;vertical-align:middle}
+.b2b-reg .eg-menu-r{left:auto;right:0;transform:none;flex-direction:column;gap:6px;min-width:220px}
+.b2b-reg .eg-menu hr{border:0;border-top:1px solid var(--b-line);margin:6px 0}
+.b2b-reg .eg-mob{display:none}
+@media (max-width:991.98px){.b2b-reg .eg-nav{display:none}.b2b-reg .eg-mob{display:flex}.b2b-reg .eg-in{height:68px}.b2b-reg .eg-logo img{height:62px}.b2b-reg .eg-burger{width:46px;height:46px}.b2b-reg .eg-login{padding:7px 20px}}
+@media (min-width:992px){
+  .b2b-reg .b-grid{min-height:calc(100vh - 89px)}
+  .b2b-reg .b-right-inner{height:calc(100vh - 89px - 48px)}
+}
+/* Desktop: whole preview fits in one screen (no scrolling) */
+@media (min-width:992px){
+  .b2b-reg .b-right{padding-top:24px;padding-bottom:24px}
+  .b2b-reg .b-right-inner{top:24px;height:calc(100vh - 48px);display:flex;flex-direction:column}
+  .b2b-reg .b-right-inner .b-pv-head{margin-bottom:6px;flex:none}
+  .b2b-reg .b-right-inner .b-pv-title{margin:0 0 12px;flex:none}
+  .b2b-reg .b-right-inner .b-gal{flex:1;min-height:0;display:flex;flex-direction:column;padding:14px}
+  .b2b-reg .b-right-inner .gal-head{flex:none;margin-bottom:10px}
+  .b2b-reg .b-right-inner .gal-grid{flex:1.7;min-height:0;grid-template-rows:1.35fr 1fr}
+  .b2b-reg .b-right-inner .gal-th,.b2b-reg .b-right-inner .gal-th:first-child{aspect-ratio:auto;min-height:0}
+  .b2b-reg .b-right-inner .gal-video{flex:1;min-height:0;aspect-ratio:auto;margin-top:12px}
+}
 
 /* Header */
 .b2b-reg .b-logo{height:60px;max-width:100%;width:auto;display:block}
@@ -41,9 +139,9 @@
 /* Plans */
 .b2b-reg .b-plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:34px}
 .b2b-reg .b-plan{position:relative;text-align:left;background:var(--b-card);border:1.5px solid var(--b-line);border-radius:var(--b-radius);padding:20px;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;display:flex;flex-direction:column;gap:12px;font:inherit;color:inherit;width:100%}
-.b2b-reg .b-plan:hover{border-color:#b9c7e6;box-shadow:var(--b-shadow);transform:translateY(-2px)}
-.b2b-reg .b-plan:focus-visible{outline:3px solid rgba(31,94,255,.35);outline-offset:2px}
-.b2b-reg .b-plan.is-selected{border-color:var(--b-primary);box-shadow:0 0 0 3px rgba(31,94,255,.12),var(--b-shadow);background:linear-gradient(180deg,#fff,#f6f9ff)}
+.b2b-reg .b-plan:hover{border-color:#c4d3ee;box-shadow:var(--b-shadow);transform:translateY(-2px)}
+.b2b-reg .b-plan:focus-visible{outline:3px solid rgba(47,111,224,.35);outline-offset:2px}
+.b2b-reg .b-plan.is-selected{border-color:var(--b-primary);box-shadow:0 0 0 3px rgba(47,111,224,.12),var(--b-shadow);background:linear-gradient(180deg,#fff,#f5f8ff)}
 .b2b-reg .b-plan-check{position:absolute;top:16px;right:16px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--b-line);display:grid;place-items:center;color:transparent;font-size:.85rem;transition:.2s;background:#fff}
 .b2b-reg .b-plan.is-selected .b-plan-check{background:var(--b-primary);border-color:var(--b-primary);color:#fff}
 .b2b-reg .b-plan-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem}
@@ -84,7 +182,7 @@
 .b2b-reg .b-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m1 1 5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 .b2b-reg .b-input::placeholder{color:#9aa7b8}
 .b2b-reg .b-input:hover,.b2b-reg .b-select:hover{border-color:#c4cfdf}
-.b2b-reg .b-input:focus,.b2b-reg .b-select:focus{outline:none;border-color:var(--b-primary);box-shadow:0 0 0 4px rgba(31,94,255,.12)}
+.b2b-reg .b-input:focus,.b2b-reg .b-select:focus{outline:none;border-color:var(--b-primary);box-shadow:0 0 0 4px rgba(47,111,224,.12)}
 .b2b-reg .b-field.has-error .b-input,.b2b-reg .b-field.has-error .b-select{border-color:var(--b-red);background-color:#fffafa}
 .b2b-reg .b-field.has-error .b-input:focus{box-shadow:0 0 0 4px rgba(217,58,58,.12)}
 .b2b-reg .b-err{display:none;color:var(--b-red);font-size:.78rem;margin-top:5px}
@@ -108,8 +206,8 @@
 .b2b-reg .b-check input{width:18px;height:18px;margin-top:2px;accent-color:var(--b-primary);flex:none}
 .b2b-reg .b-check a{color:var(--b-primary);font-weight:600;text-decoration:none}
 .b2b-reg .b-check a:hover{text-decoration:underline}
-.b2b-reg .b-cta{width:100%;height:52px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--b-primary),#3f7bff);color:#fff;font-weight:700;font-size:1rem;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s,box-shadow .2s,opacity .2s;box-shadow:0 8px 20px rgba(31,94,255,.28)}
-.b2b-reg .b-cta:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 26px rgba(31,94,255,.34)}
+.b2b-reg .b-cta{width:100%;height:52px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--b-primary),#5a92f0);color:#fff;font-weight:700;font-size:1rem;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s,box-shadow .2s,opacity .2s;box-shadow:0 8px 20px rgba(47,111,224,.28)}
+.b2b-reg .b-cta:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 26px rgba(47,111,224,.34)}
 .b2b-reg .b-cta:disabled{opacity:.8;cursor:progress}
 .b2b-reg .b-spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:b-spin .7s linear infinite;display:none}
 .b2b-reg .b-cta.loading .b-spin{display:block}
@@ -183,7 +281,7 @@
 .b2b-reg .b-search div{background:#fff;border:1px solid var(--b-line);border-radius:8px;padding:7px 9px;font-size:.68rem;color:var(--b-muted);display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden}
 .b2b-reg .b-search button{background:var(--b-primary);color:#fff;border:0;border-radius:8px;padding:0 12px;font-size:.7rem;font-weight:600}
 .b2b-reg .b-hotel{display:flex;gap:10px;align-items:center}
-.b2b-reg .b-hotel .th{width:44px;height:44px;border-radius:9px;flex:none;background:linear-gradient(135deg,#3a62d6,#7aa2ff);display:grid;place-items:center;color:#fff}
+.b2b-reg .b-hotel .th{width:44px;height:44px;border-radius:9px;flex:none;background:linear-gradient(135deg,#3a62d6,#7eaaf5);display:grid;place-items:center;color:#fff}
 .b2b-reg .b-hotel .nm{flex:1;min-width:0;font-size:.74rem;font-weight:700;color:var(--b-navy)}
 .b2b-reg .b-hotel .nm small{display:block;font-weight:500;color:var(--b-muted);font-size:.64rem}
 .b2b-reg .b-hotel .pr{text-align:right;font-size:.62rem;color:var(--b-muted)}
@@ -195,15 +293,15 @@
 
 .b2b-reg .b-pill-note{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:var(--b-muted);background:#fff;border:1px solid var(--b-line);border-radius:99px;padding:4px 12px;margin-bottom:10px}
 .b2b-reg .b-portal.active{flex-direction:column}
-.b2b-reg .b-appbar{display:flex;align-items:center;gap:10px;background:#142a62;color:#fff;padding:12px 16px;font-size:.82rem}
+.b2b-reg .b-appbar{display:flex;align-items:center;gap:10px;background:#1c3f75;color:#fff;padding:12px 16px;font-size:.82rem}
 .b2b-reg .b-appbar .mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#1aa6d6,#2f6bff);display:grid;place-items:center;font-size:.85rem}
 .b2b-reg .b-appbar b{font-weight:700}
-.b2b-reg .b-appbar .pn{color:#b9c6e4}
+.b2b-reg .b-appbar .pn{color:#c4d3ee}
 .b2b-reg .b-appbar .sep{width:1px;height:16px;background:#3d5190}
 .b2b-reg .b-appbar .co{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.b2b-reg .b-appbar .av{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#2c427f;display:grid;place-items:center;font-size:.68rem;font-weight:700;flex:none}
+.b2b-reg .b-appbar .av{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#2a4f8f;display:grid;place-items:center;font-size:.68rem;font-weight:700;flex:none}
 .b2b-reg .b-body{display:flex;min-height:380px}
-.b2b-reg .b-side{background:#142a62;padding:10px 8px 20px}
+.b2b-reg .b-side{background:#1c3f75;padding:10px 8px 20px}
 .b2b-reg .b-nav{font-size:.78rem;color:#dbe3f5;border:1px solid transparent}
 .b2b-reg .b-nav.active{background:#26418a;border-color:#4a68b8}
 .b2b-reg .b-main{background:#f3f5fa}
@@ -248,9 +346,9 @@
 .b2b-reg .b-field.has-error .b-err{display:block}
 .b2b-reg .b-appbar .right{margin-left:auto;display:flex;align-items:center;gap:10px}
 .b2b-reg .b-appbar .right .av{margin-left:0}
-.b2b-reg .b-appbar .bell{width:28px;height:28px;border-radius:8px;background:#2c427f;display:grid;place-items:center;font-size:.75rem}
+.b2b-reg .b-appbar .bell{width:28px;height:28px;border-radius:8px;background:#2a4f8f;display:grid;place-items:center;font-size:.75rem}
 .b2b-reg .b-appbar .who{line-height:1.1;font-size:.72rem}
-.b2b-reg .b-appbar .who small{display:block;color:#b9c6e4;font-size:.62rem}
+.b2b-reg .b-appbar .who small{display:block;color:#c4d3ee;font-size:.62rem}
 .b2b-reg .b-appbar .co b{font-weight:700}
 .b2b-reg .b-body{height:600px}
 .b2b-reg .b-side{overflow-y:auto;width:168px}
@@ -281,7 +379,7 @@
 .b2b-reg .b-prop .meta b{color:var(--b-ink)}
 .b2b-reg .b-chips{display:flex;flex-wrap:wrap;gap:4px}
 .b2b-reg .b-chips span{font-size:.6rem;border:1px solid var(--b-line);border-radius:6px;padding:2px 6px;color:#3b4a60;background:#f8fafc}
-.b2b-reg .b-chips span.bd2{background:#eef0ff;border-color:#e0e3ff;color:#4338ca;font-weight:600;border-radius:99px}
+.b2b-reg .b-chips span.bd2{background:#edf3ff;border-color:#e0e3ff;color:#2f6fe0;font-weight:600;border-radius:99px}
 .b2b-reg .b-chips span.bd2.net{background:var(--b-green-soft);border-color:#b6e3d1;color:var(--b-green)}
 .b2b-reg .b-prop .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;flex-wrap:wrap;margin-top:2px}
 .b2b-reg .b-prop .pr{font-size:.6rem;color:var(--b-muted)}
@@ -324,7 +422,7 @@
 .b2b-reg .pd-head p{margin:2px 0 0;font-size:.7rem;color:var(--b-muted)}
 .b2b-reg .pd-head .bg{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .b2b-reg .pd-gq{background:var(--b-primary);color:#fff;border:0;border-radius:8px;padding:7px 12px;font-size:.7rem;font-weight:600}
-.b2b-reg .pd-comm{background:#eef0ff;color:#4338ca;border-radius:99px;font-size:.66rem;font-weight:700;padding:4px 10px}
+.b2b-reg .pd-comm{background:#edf3ff;color:#2f6fe0;border-radius:99px;font-size:.66rem;font-weight:700;padding:4px 10px}
 .b2b-reg .pd-comm.net{background:var(--b-green-soft);color:var(--b-green)}
 .b2b-reg .pd-tabs{display:inline-flex;background:#fff;border:1px solid var(--b-line);border-radius:10px;padding:3px;margin-bottom:12px}
 .b2b-reg .pd-tabs button{border:0;background:transparent;font-size:.72rem;font-weight:600;color:var(--b-muted);padding:6px 12px;border-radius:8px}
@@ -336,7 +434,7 @@
 .b2b-reg .pd-steps span.on{color:var(--b-primary);border-bottom-color:var(--b-primary)}
 .b2b-reg .pd-steps span.done{color:var(--b-green)}
 .b2b-reg .pd-bd{padding:14px;font-size:.74rem}
-.b2b-reg .pd-info{background:#eaf0ff;border:1px solid #cfdcff;border-radius:8px;padding:8px 10px;margin-bottom:12px;font-size:.7rem}
+.b2b-reg .pd-info{background:#e8f0fe;border:1px solid #d4e2fb;border-radius:8px;padding:8px 10px;margin-bottom:12px;font-size:.7rem}
 .b2b-reg .pd-lbl{font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--b-muted);margin:0 0 4px;display:block}
 .b2b-reg .pd-sec{font-size:.72rem;font-weight:800;text-transform:uppercase;color:var(--b-navy);margin:12px 0 6px}
 .b2b-reg .pd-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -347,7 +445,7 @@
 .b2b-reg .pd-rm{border:1px solid var(--b-line);border-radius:10px;padding:10px;display:grid;gap:8px}
 .b2b-reg .pd-rm-top{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
 .b2b-reg .pd-rm-top>div{flex:1;min-width:110px}
-.b2b-reg .pd-add{border:1px dashed #b9c7e6;background:#f6f9ff;color:var(--b-primary);border-radius:8px;height:32px;padding:0 12px;font-size:.7rem;font-weight:600}
+.b2b-reg .pd-add{border:1px dashed #c4d3ee;background:#f5f8ff;color:var(--b-primary);border-radius:8px;height:32px;padding:0 12px;font-size:.7rem;font-weight:600}
 .b2b-reg .pd-added{display:flex;justify-content:space-between;align-items:center;background:#f3f5fa;border-radius:8px;padding:6px 10px;font-size:.7rem}
 .b2b-reg .pd-added button{border:0;background:none;color:var(--b-red);font-size:.9rem}
 .b2b-reg .pd-ft{display:flex;justify-content:space-between;gap:8px;padding:12px 14px;border-top:1px solid var(--b-line);background:#fbfcfe}
@@ -379,24 +477,24 @@
 .b2b-reg .pd-pol:last-child{border:0}
 .b2b-reg .pd-pol b{color:var(--b-navy)}
 @container (max-width:520px){ .pd-row{grid-template-columns:1fr} .pd-3{grid-template-columns:1fr 1fr} .pd-gal{grid-template-rows:60px 60px} }
-.b2b-reg .b-network{position:relative;overflow:hidden;background:linear-gradient(120deg,#0b1f3a 0%,#173a7a 55%,#1f5eff 130%);color:#fff;border-radius:18px;padding:22px 24px;margin:-6px 0 26px;box-shadow:0 14px 34px rgba(31,94,255,.22)}
+.b2b-reg .b-network{position:relative;overflow:hidden;background:linear-gradient(120deg,#12294a 0%,#1c3f75 55%,#2f6fe0 130%);color:#fff;border-radius:18px;padding:22px 24px;margin:-6px 0 26px;box-shadow:0 14px 34px rgba(47,111,224,.22)}
 .b2b-reg .b-network::before,.b2b-reg .b-network::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
 .b2b-reg .b-network::before{width:220px;height:220px;right:-60px;top:-90px}
 .b2b-reg .b-network::after{width:140px;height:140px;right:90px;bottom:-80px;background:rgba(255,255,255,.05)}
 .b2b-reg .nw-top{display:flex;align-items:center;gap:20px;position:relative;z-index:1}
 .b2b-reg .nw-num{flex:none;text-align:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 16px;backdrop-filter:blur(4px)}
-.b2b-reg .nw-num b{display:block;font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1;background:linear-gradient(180deg,#fff,#bcd2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.b2b-reg .nw-num span{font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#bcd0f5}
+.b2b-reg .nw-num b{display:block;font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1;background:linear-gradient(180deg,#fff,#bcd3fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.b2b-reg .nw-num span{font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#bcd3fa}
 .b2b-reg .nw-txt h2{font-size:1.2rem;font-weight:800;margin:0 0 4px;letter-spacing:-.01em;color:#fff}
-.b2b-reg .nw-txt p{margin:0;font-size:.86rem;color:#cdd9f2;line-height:1.5}
+.b2b-reg .nw-txt p{margin:0;font-size:.86rem;color:#d4e2fb;line-height:1.5}
 .b2b-reg .nw-bot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);position:relative;z-index:1}
 .b2b-reg .nw-av{display:flex}
-.b2b-reg .nw-av span{width:32px;height:32px;border-radius:50%;border:2px solid #17356f;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:#fff;margin-left:-8px}
+.b2b-reg .nw-av span{width:32px;height:32px;border-radius:50%;border:2px solid #1c3f75;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:#fff;margin-left:-8px}
 .b2b-reg .nw-av span:first-child{margin-left:0}
 .b2b-reg .nw-av span.more{background:#fff;color:var(--b-primary)}
 .b2b-reg .nw-pills{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
 .b2b-reg .nw-pills li{display:flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:6px 12px}
-.b2b-reg .nw-pills i{color:#7fe3b5}
+.b2b-reg .nw-pills i{color:#6fe0b0}
 @media (max-width:575.98px){.b2b-reg .nw-top{flex-direction:column;align-items:flex-start;gap:14px}.b2b-reg .b-network{padding:18px}}
 /* Responsive */
 @media (max-width:1199.98px){
@@ -539,46 +637,97 @@
   .b2b-reg .b-plan ul{gap:6px;font-size:.8rem}
   .b2b-reg .b-activate .b-alt{display:none}
 }
-.b2b-reg .b-modal-prop{display:flex;align-items:center;gap:12px;background:var(--b-primary-soft);border:1px solid #cfdcff;border-radius:12px;padding:10px 14px;margin-bottom:12px}
+.b2b-reg .b-modal-prop{display:flex;align-items:center;gap:12px;background:var(--b-primary-soft);border:1px solid #d4e2fb;border-radius:12px;padding:10px 14px;margin-bottom:12px}
 .b2b-reg .b-modal-prop>i{font-size:1.3rem;color:var(--b-primary)}
 .b2b-reg .b-modal-prop b{color:var(--b-navy)}
 .b2b-reg .b-modal-prop div b{display:block;font-size:.95rem}
 .b2b-reg .b-modal-prop div span{font-size:.78rem;color:var(--b-muted)}
 .b2b-reg .b-modal-prop div span b{display:inline;font-size:.78rem}
-.b2b-reg .nw-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#ffd98a;margin-bottom:6px}
-.b2b-reg .nw-txt h2 .hl{background:linear-gradient(90deg,#ffe29a,#ffb86b);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.b2b-reg .nw-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#ffd36e;margin-bottom:6px}
+.b2b-reg .nw-txt h2 .hl{background:linear-gradient(90deg,#ffd36e,#f4a85b);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
 .b2b-reg .nw-prop{display:inline-flex;align-items:stretch;margin-top:12px;background:rgba(255,255,255,.96);border-radius:14px;box-shadow:0 8px 22px rgba(4,14,38,.35);overflow:hidden;max-width:100%}
-.b2b-reg .nw-prop .pi{display:grid;place-items:center;width:44px;background:linear-gradient(135deg,#1f5eff,#4b86ff);color:#fff;font-size:1.15rem;flex:none}
+.b2b-reg .nw-prop .pi{display:grid;place-items:center;width:44px;background:linear-gradient(135deg,#2f6fe0,#6a9cf2);color:#fff;font-size:1.15rem;flex:none}
 .b2b-reg .nw-prop .pn{padding:8px 14px;min-width:0}
 .b2b-reg .nw-prop .pc{padding:8px 14px;border-left:1px dashed #cdd6e6;background:#f3f6fc;flex:none}
 .b2b-reg .nw-prop small{display:block;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a889f;line-height:1.2}
 .b2b-reg .nw-prop .pn b{display:block;color:var(--b-navy);font-size:1rem;font-weight:800;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .b2b-reg .nw-prop .pc b{display:block;color:var(--b-primary);font-size:1rem;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums;line-height:1.25}
+/* ---- Light theme overrides ---- */
+.b2b-reg .b-network{padding:18px 22px;margin-bottom:18px;background:linear-gradient(120deg,#f1f6ff 0%,#e3eeff 100%);color:var(--b-navy);border:1px solid #d6e4fb;box-shadow:0 6px 20px rgba(47,111,224,.08)}
+.b2b-reg .b-network::before,.b2b-reg .b-network::after{background:rgba(47,111,224,.06)}
+.b2b-reg .nw-num{background:#fff;border:1px solid #d6e4fb}
+.b2b-reg .nw-num b{background:none;color:var(--b-primary);-webkit-text-fill-color:currentColor}
+.b2b-reg .nw-num span{color:var(--b-muted)}
+.b2b-reg .nw-txt h2{color:var(--b-navy)}
+.b2b-reg .nw-txt p{color:#4b5b73}
+.b2b-reg .nw-eyebrow{color:var(--b-primary)}
+.b2b-reg .nw-txt h2 .hl{background:none;color:var(--b-primary);-webkit-text-fill-color:currentColor}
+.b2b-reg .nw-prop{box-shadow:0 2px 10px rgba(15,30,60,.08);border:1px solid #d6e4fb}
+.b2b-reg .gal-video{background:linear-gradient(135deg,#e8f0fe,#cfe0fc) center/cover no-repeat}
+.b2b-reg .gal-video .tx{color:var(--b-navy);background:linear-gradient(transparent,rgba(255,255,255,.9))}
+.b2b-reg .gal-cap{background:rgba(255,255,255,.92);color:var(--b-navy);box-shadow:0 1px 4px rgba(15,30,60,.15)}
+.b2b-reg .b-cta{box-shadow:0 4px 12px rgba(47,111,224,.2)}
 @media (min-width:992px) and (max-height:860px){.b2b-reg .nw-eyebrow{display:none}.b2b-reg .nw-prop{margin-top:8px}.b2b-reg .nw-prop .pn,.b2b-reg .nw-prop .pc{padding:6px 12px}}
 </style>
 </head>
 <body class="m-0">
 <div class="b2b-reg">
+ <header class="eg-head" id="eg-head">
+  <div class="eg-in">
+   <a class="eg-logo" href="https://www.eglobe-solutions.com/index.html" aria-label="eGlobe Solutions home">
+     <img src="https://www.eglobe-solutions.com/img/logo-dark.webp" alt="eGlobe Solutions" onerror="this.outerHTML='<b style=&quot;font-size:1.3rem;color:#12294a&quot;>eGlobe Solutions</b>'">
+   </a>
+   <nav class="eg-nav" aria-label="Main">
+     <a href="https://www.eglobe-solutions.com/index.html">Home</a>
+     <div class="eg-dd">
+       <button type="button" class="eg-dd-b" aria-expanded="false">Solutions <i class="bi bi-chevron-down"></i></button>
+       <div class="eg-menu">
+         <div class="col"><h6>Products</h6>
+           <a href="https://www.eglobe-solutions.com/channel-manager.html">Channel Manager</a>
+           <a href="https://www.eglobe-solutions.com/cloud-pms.html">Cloud PMS</a>
+           <a href="https://www.eglobe-solutions.com/cloud-pos.html">Cloud POS</a>
+           <a href="https://www.eglobe-solutions.com/booking-engine.html">Booking Engine</a>
+           <a href="https://www.eglobe-solutions.com/website-builder.html">Website Builder</a>
+           <a href="https://www.eglobe-solutions.com/ai-hotel-software.html">eGlobe AI Tools <span class="new">NEW</span></a></div>
+         <div class="col"><h6>Services</h6>
+           <a href="https://www.eglobe-solutions.com/ota-listing.html">OTA Listing</a>
+           <a href="https://www.eglobe-solutions.com/b2b-bookings.html">Stay B2B</a></div>
+         <div class="col"><h6>Integrations</h6>
+           <a href="https://www.eglobe-solutions.com/api-connectivity.html">PMS (APIs for PMS)</a>
+           <a href="https://www.eglobe-solutions.com/payment-gateway.html">Payment Gateways</a>
+           <a href="https://www.eglobe-solutions.com/meta-search-engines.html">Meta Search Engines</a></div>
+       </div>
+     </div>
+     <a href="pricing.html">Pricing</a>
+     <a href="https://www.eglobe-solutions.com/reseller.html">Reseller</a>
+     <a href="https://www.eglobe-solutions.com/contact.html">Contact Us</a>
+   </nav>
+   <div class="eg-right">
+     <a class="eg-login" href="https://www.eglobe-solutions.com/hms">Login</a>
+     <div class="eg-dd eg-more">
+       <button type="button" class="eg-burger eg-dd-b" aria-label="Menu" aria-expanded="false"><i class="bi bi-text-indent-left"></i></button>
+       <div class="eg-menu eg-menu-r">
+         <div class="col eg-mob"><a href="https://www.eglobe-solutions.com/index.html">Home</a><a href="pricing.html">Pricing</a><a href="https://www.eglobe-solutions.com/reseller.html">Reseller</a><a href="https://www.eglobe-solutions.com/contact.html">Contact Us</a><hr></div>
+         <div class="col eg-mob"><h6>Products</h6>
+           <a href="https://www.eglobe-solutions.com/channel-manager.html">Channel Manager</a><a href="https://www.eglobe-solutions.com/cloud-pms.html">Cloud PMS</a><a href="https://www.eglobe-solutions.com/cloud-pos.html">Cloud POS</a><a href="https://www.eglobe-solutions.com/booking-engine.html">Booking Engine</a><a href="https://www.eglobe-solutions.com/website-builder.html">Website Builder</a><a href="https://www.eglobe-solutions.com/b2b-bookings.html">Stay B2B</a><hr></div>
+         <div class="col"><a href="https://www.eglobe-solutions.com/about-us.html">About Us</a><a href="https://www.eglobe-solutions.com/blog.html">Blog</a></div>
+       </div>
+     </div>
+   </div>
+  </div>
+ </header>
  <div class="b-grid">
 
   <!-- ===================== LEFT: REGISTRATION ===================== -->
   <main class="b-left">
-    <div class="b-top">
-      <a href="https://www.b2bstays.in" aria-label="B2BStays home">
-        <img class="b-logo" id="b-logo" src="https://www.eglobe-solutions.com/img/logo-dark.webp" alt="B2BStays"
-             onerror="this.style.display='none';document.getElementById('b-logo-fb').style.display='block'">
-        <span class="b-logo-fallback" id="b-logo-fb">B2B<span style="color:var(--b-primary)">Stays</span></span>
-      </a>
-    </div>
 
     <section class="b-network" aria-label="Travel agent network">
       <div class="nw-top">
-        <div class="nw-num"><b>8,000+</b><span>Travel Agents</span></div>
+        <div class="nw-ic"><i class="bi bi-people-fill"></i></div>
         <div class="nw-txt">
-          <span class="nw-eyebrow"><i class="bi bi-stars"></i> More visibility · More bookings</span>
-          <h2 id="nw-title">Increase the visibility of <span class="hl" id="nw-hl">Hotel Pali</span> among our 8,000+ travel agent network</h2>
-          <p>Get your rooms in front of agents who book every day, and increase your bookings.</p>
-          <div class="nw-prop"><span class="pi"><i class="bi bi-building-check"></i></span><div class="pn"><small>Your property</small><b id="nw-hotel">Hotel Pali</b></div><span class="pc"><small>Property ID</small><b id="nw-code">15157</b></span></div>
+          <h2 id="nw-title">Connect with <span class="hl">8,000+ travel agents</span> and sell your property directly</h2>
+          <div class="nw-tags"><span><i class="bi bi-graph-up-arrow"></i> More bookings</span><span><i class="bi bi-currency-rupee"></i> More revenue</span><span><i class="bi bi-lightning-charge-fill"></i> Direct to agents</span></div>
+          <div class="nw-prop" id="nw-prop"><span class="pi"><i class="bi bi-building-check"></i></span><div class="pn"><small>Your property</small><b id="nw-hotel"></b></div><span class="pc"><small>Property ID</small><b id="nw-code"></b></span></div>
         </div>
       </div>
     </section>
@@ -607,7 +756,7 @@
             <div class="r neg"><span>Total Commission (15%)</span><b>− ₹1,500</b></div>
             <div class="r sub"><span>↳ eGlobe platform fee (5%)</span><b>₹500</b></div>
             <div class="r sub"><span>↳ Travel agent commission (10%)</span><b>₹1,000</b></div>
-            <div class="r tot"><span>Hotel Payable Amount</span><b>₹8,500</b></div>
+            <div class="r tot"><span>Property Payable Amount</span><b>₹8,500</b></div>
           </div>
           <span class="b-select-btn"><span class="lbl">Select Plan</span> <i class="bi bi-arrow-right"></i></span>
         </button>
@@ -615,7 +764,7 @@
         <button type="button" class="b-plan p-net" role="radio" aria-checked="false" data-plan="net">
           <span class="b-plan-check"><i class="bi bi-check-lg"></i></span>
           <span class="b-plan-icon"><i class="bi bi-tag"></i></span>
-          <h3>Net Rate Model</h3>
+          <h3>Non Commissionable Model</h3>
           <span class="b-badge">No fixed commission</span>
           <ul>
             <li><i class="bi bi-check-circle-fill"></i>You provide net rates. B2BStays pays you the agreed net amount.</li>
@@ -623,10 +772,10 @@
             <li><i class="bi bi-check-circle-fill"></i>Final selling price and markup are managed by B2BStays.</li>
           </ul>
           <div class="b-calc" aria-label="Net rate example">
-            <div class="r"><span>Hotel Net Rate</span><b>₹8,000</b></div>
+            <div class="r"><span>Property Net Rate</span><b>₹8,000</b></div>
             <div class="r add"><span>+ B2BStays Markup</span><b>₹2,000</b></div>
             <div class="r"><span>Final Selling Price</span><b>₹10,000</b></div>
-            <div class="r tot"><span>Hotelier Receives</span><b>₹8,000</b></div>
+            <div class="r tot"><span>Property Receives</span><b>₹8,000</b></div>
           </div>
           <span class="b-select-btn"><span class="lbl">Select Plan</span> <i class="bi bi-arrow-right"></i></span>
         </button>
@@ -638,15 +787,19 @@
         <form class="b-modal-box" id="b-act-form" novalidate role="dialog" aria-modal="true" aria-labelledby="b-modal-title">
           <button type="button" class="b-modal-x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button>
           <h3 id="b-modal-title">Request Activation</h3>
-          <div class="b-modal-prop"><i class="bi bi-building"></i><div><b id="m-hotel">Hotel Pali</b><span>Property ID <b id="m-code">15157</b></span></div></div>
+          <div class="b-modal-prop" id="m-prop"><i class="bi bi-building"></i><div><b id="m-hotel"></b><span>Property ID <b id="m-code"></b></span></div></div>
           <p class="b-modal-sub">Selected plan: <b id="b-modal-plan"></b>. Tell us who to contact and we'll activate your account.</p>
           <div class="b-field"><label class="b-label" for="a-name">Contact Person Name <span class="req">*</span></label>
             <input class="b-input" id="a-name" autocomplete="name" placeholder="Full name"><div class="b-err"></div></div>
+          <div class="b-field"><label class="b-label" for="a-hotel">Hotel Name <span class="req">*</span></label>
+            <input class="b-input" id="a-hotel" autocomplete="organization" placeholder="Your hotel / property name"><div class="b-err"></div></div>
           <div class="b-field"><label class="b-label" for="a-email">Email ID <span class="req">*</span></label>
-            <input class="b-input" type="email" id="a-email" autocomplete="email" placeholder="you@yourhotel.com"><div class="b-err"></div></div>
+            <input class="b-input" type="email" id="a-email" autocomplete="email" placeholder="you@yourproperty.com"><div class="b-err"></div></div>
           <div class="b-field"><label class="b-label" for="a-phone">Phone Number <span class="req">*</span></label>
             <div class="b-phone"><select class="b-select" id="a-cc" aria-label="Country code"><option value="+91">+91 IN</option><option value="+971">+971 AE</option><option value="+1">+1 US</option><option value="+44">+44 UK</option><option value="+65">+65 SG</option><option value="+66">+66 TH</option><option value="+60">+60 MY</option><option value="+62">+62 ID</option><option value="+94">+94 LK</option><option value="+977">+977 NP</option><option value="+880">+880 BD</option><option value="+960">+960 MV</option></select>
             <input class="b-input" type="tel" id="a-phone" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210"></div><div class="b-err"></div></div>
+          <div class="b-field"><label class="b-label" for="a-remarks">Remarks <span style="font-weight:500;color:var(--b-muted)">(optional)</span></label>
+            <textarea class="b-input" id="a-remarks" rows="3" maxlength="500" placeholder="Anything we should know? e.g. number of rooms, preferred call time"></textarea></div>
           <div class="b-form-error" id="a-error" role="alert"></div>
           <button class="b-cta" type="submit" id="a-submit" style="margin-top:8px"><span class="b-spin"></span><span id="a-submit-text">Submit Request</span></button>
         </form>
@@ -669,14 +822,30 @@
   <!-- ===================== RIGHT: DASHBOARD PREVIEW ===================== -->
   <aside class="b-right" aria-label="Platform preview">
     <div class="b-right-inner">
-      <div class="b-pv-head">
-        <div class="b-pv-label"><i class="bi bi-window-sidebar"></i> Explore the B2BStays Platform – Interactive Preview</div>
-      </div>
-      <h2 class="b-pv-title" id="pv-title">Supplier Portal</h2>
 
       <!-- ===== PREVIEW MODULE: replace the contents of .b-window with your original dashboard HTML if needed ===== -->
-      <div class="b-pill-note"><i class="bi bi-info-circle"></i> Illustrative preview · sample data</div>
-      <div class="b-window"><div class="b-toast" id="pv-toast" role="status"></div>
+      <!-- Screenshot gallery + video (click to enlarge / play in popup) -->
+      <div class="b-gal" id="b-gal">
+        <div class="gal-head"><h3>B2BStays platform preview</h3></div>
+        <div class="gal-grid">
+          <button type="button" class="gal-th" data-img="images/preview-1.png" aria-label="View screenshot 1: Properties"><img src="images/preview-1.png" alt="Properties available for booking"><span class="gal-cap">Search &amp; Book</span></button>
+          <button type="button" class="gal-th" data-img="images/preview-2.png" aria-label="View screenshot 2: Hotel Packages"><img src="images/preview-2.png" alt="Packages"><span class="gal-cap">Packages</span></button>
+          <button type="button" class="gal-th" data-img="images/preview-3.png" aria-label="View screenshot 3: Cab Booking"><img src="images/preview-3.png" alt="Cab booking"><span class="gal-cap">Cab Booking</span></button>
+        </div>
+        <button type="button" class="gal-video" id="gal-video" aria-label="Play platform video">
+          <span class="pl"><i class="bi bi-play-fill"></i></span>
+          <span class="tx"><b>B2BStays platform walkthrough</b><small id="gal-vsub">Video coming soon</small></span>
+        </button>
+      </div>
+      <div class="b-lb" id="b-lb" hidden role="dialog" aria-modal="true">
+        <button type="button" class="lb-x" id="lb-x" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Previous image"><i class="bi bi-chevron-left"></i></button>
+        <button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Next image"><i class="bi bi-chevron-right"></i></button>
+        <div class="lb-count" id="lb-count"></div>
+        <div class="lb-body" id="lb-body"></div>
+      </div>
+
+      <div class="b-window" style="display:none"><div class="b-toast" id="pv-toast" role="status"></div>
         <div class="b-portal active" data-portal="agent">
           <div class="b-appbar"><span class="mk"><i class="bi bi-buildings"></i></span><b>B2BStays</b><span class="pn">Travel Agent Portal</span><span class="sep"></span><span class="co">Welcome, <b>Lakshya Travels</b></span>
             <span class="right"><span class="bell"><i class="bi bi-bell-fill"></i></span><span class="av">LT</span><span class="who"><b>aditya</b><small>Travel Agent</small></span></span></div>
@@ -696,7 +865,7 @@
             <button class="b-nav"><i class="bi bi-gear"></i><span>Settings</span></button>
           </nav>
           <div class="b-main">
-            <div id="pv-listview"><div class="b-mh"><div><h4>Hotels available for booking</h4><p>Browse eGlobe partner properties and book directly for your clients</p></div></div>
+            <div id="pv-listview"><div class="b-mh"><div><h4>Properties available for booking</h4><p>Browse eGlobe partner properties and book directly for your clients</p></div></div>
             <div class="b-filters">
               <label>Property name<input id="pv-q" placeholder="Search by name"></label>
               <label>City<select id="pv-city"><option value="">All cities</option></select></label>
@@ -732,8 +901,8 @@ const API = {
 };
 const PLANS = {
   commissionable:{label:'Commissionable Model – 15%',cls:'',icon:'bi-percent',
-    terms:['15% commission is charged only on confirmed bookings.','Of the 15%, 5% is eGlobe\'s platform fee and the remaining 10% is the travel agents\' commission.','No upfront commission payment.','Example: ₹10,000 booking → ₹1,500 commission (₹500 platform fee + ₹1,000 agent commission) → ₹8,500 payable to your hotel.','Payment is made after commission deduction, as per settlement terms.']},
-  net:{label:'Net Rate Model',cls:'net',icon:'bi-tag',
+    terms:['15% commission is charged only on confirmed bookings.','Of the 15%, 5% is eGlobe\'s platform fee and the remaining 10% is the travel agents\' commission.','No upfront commission payment.','Example: ₹10,000 booking → ₹1,500 commission (₹500 platform fee + ₹1,000 agent commission) → ₹8,500 payable to your property.','Payment is made after commission deduction, as per settlement terms.']},
+  net:{label:'Non Commissionable Model',cls:'net',icon:'bi-tag',
     terms:['You provide net rates; B2BStays pays the agreed net amount.','B2BStays adds its markup over your net rate; it manages the final selling price.','Example: ₹8,000 net + ₹2,000 markup → ₹10,000 selling price; you receive ₹8,000.','No fixed commission applies under this model.']}
 };
 const COUNTRIES=[['India','+91'],['United Arab Emirates','+971'],['United States','+1'],['United Kingdom','+44'],['Singapore','+65'],['Thailand','+66'],['Malaysia','+60'],['Indonesia','+62'],['Sri Lanka','+94'],['Nepal','+977'],['Bangladesh','+880'],['Maldives','+960'],['Saudi Arabia','+966'],['Qatar','+974'],['Oman','+968'],['Australia','+61'],['Canada','+1'],['Germany','+49'],['France','+33'],['Other','+']];
@@ -759,6 +928,7 @@ const q0=new URLSearchParams(location.search);
 function openModal(){
   $('#b-modal-plan').textContent=PLANS[selectedPlan].label;
   if(!$('#a-name').value) $('#a-name').value=q0.get('name')||'';
+  if(!$('#a-hotel').value) $('#a-hotel').value=HOTEL_NAME||'';
   if(!$('#a-email').value) $('#a-email').value=q0.get('email')||'';
   if(!$('#a-phone').value) $('#a-phone').value=q0.get('phone')||'';
   const cc=q0.get('cc'); if(cc&&[...$('#a-cc').options].some(o=>o.value===cc)) $('#a-cc').value=cc;
@@ -776,6 +946,7 @@ $('#b-activate-btn').addEventListener('click',()=>{
 });
 const aRules={
   'a-name':v=>v.trim().length<2?'Please enter the contact person name.':'',
+  'a-hotel':v=>v.trim().length<2?'Please enter your hotel name.':'',
   'a-email':v=>!v.trim()?'Please enter your email ID.':!EMAIL.test(v.trim())?'Enter a valid email address.':'',
   'a-phone':v=>{const d=v.replace(/[\s-]/g,'');return !d?'Please enter your phone number.':!/^\d{7,12}$/.test(d)?'Enter a valid phone number (7–12 digits).':'';}
 };
@@ -786,7 +957,7 @@ actForm.addEventListener('submit',async e=>{
   if(Object.keys(aRules).map(aCheck).includes(false)) return;
   const btn=$('#a-submit');
   const payload={businessModel:selectedPlan,contactName:$('#a-name').value.trim(),email:$('#a-email').value.trim().toLowerCase(),
-    mobile:$('#a-cc').value+$('#a-phone').value.replace(/[\s-]/g,''),hotel:HOTEL_NAME,propertyCode:PROPERTY_CODE,channelManagerId:q0.get('cm_id')||'',source:q0.get('source')||'channel-manager'};
+    mobile:$('#a-cc').value+$('#a-phone').value.replace(/[\s-]/g,''),hotel:$('#a-hotel').value.trim(),remarks:$('#a-remarks').value.trim(),propertyCode:PROPERTY_CODE,channelManagerId:q0.get('cm_id')||'',source:q0.get('source')||'channel-manager'};
   $('#a-error').style.display='none'; btn.disabled=true; btn.classList.add('loading'); $('#a-submit-text').textContent='Sending request…';
   try{
     const res=await API.register(payload);
@@ -798,21 +969,52 @@ actForm.addEventListener('submit',async e=>{
     const b=$('#a-error'); b.textContent=err.message||'Something went wrong. Please try again.'; b.style.display='block';
   }finally{ btn.disabled=false; btn.classList.remove('loading'); $('#a-submit-text').textContent='Submit Request'; }
 });
+/* ---------------- Header dropdowns ---------------- */
+{
+  const dds=$$('.eg-dd');
+  dds.forEach(d=>d.querySelector('.eg-dd-b').addEventListener('click',e=>{e.stopPropagation();const o=d.classList.contains('open');dds.forEach(x=>{x.classList.remove('open');x.querySelector('.eg-dd-b').setAttribute('aria-expanded','false');});if(!o){d.classList.add('open');e.currentTarget.setAttribute('aria-expanded','true');}}));
+  document.addEventListener('click',()=>dds.forEach(x=>x.classList.remove('open')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')dds.forEach(x=>x.classList.remove('open'));});
+}
+/* ---------------- Screenshot gallery + video popup ---------------- */
+const VIDEO_URL='';   // paste your YouTube link here (watch / youtu.be / embed all work)
+{
+  const lb=$('#b-lb'), body=$('#lb-body');
+  root.appendChild(lb);   // keep popup above the page content
+  const imgs=$$('.gal-th').map(b=>b.dataset.img); let cur=0;
+  const open=(html,single)=>{body.innerHTML=html;lb.classList.toggle('single',!!single);lb.hidden=false;document.body.style.overflow='hidden';};
+  const close=()=>{lb.hidden=true;body.innerHTML='';document.body.style.overflow='';};
+  const show=i=>{cur=(i+imgs.length)%imgs.length;body.innerHTML='<img src="'+imgs[cur]+'" alt="">';$('#lb-count').textContent=(cur+1)+' / '+imgs.length;};
+  const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:'';};
+  $$('.gal-th').forEach((b,i)=>b.addEventListener('click',()=>{open('',false);show(i);}));
+  $('#lb-prev').addEventListener('click',e=>{e.stopPropagation();show(cur-1);});
+  $('#lb-next').addEventListener('click',e=>{e.stopPropagation();show(cur+1);});
+  document.addEventListener('keydown',e=>{if(lb.hidden||lb.classList.contains('single'))return;if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
+  { const vid=ytId(VIDEO_URL); if(vid){ $('#gal-video').style.backgroundImage='url(https://img.youtube.com/vi/'+vid+'/maxresdefault.jpg)'; $('#gal-vsub').textContent='Watch video'; } }
+  $('#gal-video').addEventListener('click',()=>{
+    const id=ytId(VIDEO_URL);
+    open(id?'<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="B2BStays video"></iframe>'
+           :'<div class="lb-soon"><i class="bi bi-camera-video"></i><h4 class="mt-2">Video coming soon</h4><p class="mb-0">Our platform walkthrough will be available here shortly.</p></div>',true);
+  });
+  $('#lb-x').addEventListener('click',close);
+  lb.addEventListener('click',e=>{if(e.target===lb||e.target===body)close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)close();});
+}
 /* ---------------- Channel-manager deep link (?hotel=..&cm_id=..&plan=..) ---------------- */
 const qs=new URLSearchParams(location.search);
 const qsl={}; qs.forEach((v,k)=>{qsl[k.toLowerCase().replace(/[_\-\s]/g,'')]=v;});   // case/underscore-insensitive keys
-const HOTEL_NAME=(qsl.hotel||qsl.hotelname||qsl.property||qsl.propertyname||'Hotel Pali').trim().slice(0,80);   // demo default: Hotel Pali
-const PROPERTY_CODE=String(qsl.code||qsl.propertycode||qsl.propertyid||qsl.hotelcode||qsl.hotelid||'15157').trim().slice(0,20);   // demo default: 15157
-const CITY_NAME=(qsl.city||qsl.hotelcity||'Pali').trim().slice(0,40);
+const HOTEL_NAME=(qsl.hotel||qsl.hotelname||qsl.property||qsl.propertyname||'').trim().slice(0,80);
+const PROPERTY_CODE=String(qsl.code||qsl.propertycode||qsl.propertyid||qsl.hotelcode||qsl.hotelid||'').trim().slice(0,20);
+const CITY_NAME=(qsl.city||qsl.hotelcity||'').trim().slice(0,40);
 {
   $('#nw-hotel').textContent=HOTEL_NAME; $('#nw-code').textContent=PROPERTY_CODE; $('#m-hotel').textContent=HOTEL_NAME; $('#m-code').textContent=PROPERTY_CODE;
-  $('#nw-hl').textContent=HOTEL_NAME;
-  document.title=HOTEL_NAME+' | Join B2BStays';
+  if(HOTEL_NAME){ document.title=HOTEL_NAME+' | Join B2BStays'; }
+  else{ $('#nw-prop').style.display='none'; $('#m-prop').style.display='none'; }
 }
 if(PLANS[qs.get('plan')]) selectPlan(qs.get('plan'));
 /* ---------------- Preview: Agent Portal with dummy data ---------------- */
 const HOTELS=[
- {n:'The Grandview Hotel',c:'New Delhi',s:5,r:4.6,rt:4,ci:'14:00',co:'12:00',p:8500,a:['Restaurant','Pool','Spa','Wi-Fi'],m:'comm',g:['#2f5bd8','#7aa2ff']},
+ {n:'The Grandview Hotel',c:'New Delhi',s:5,r:4.6,rt:4,ci:'14:00',co:'12:00',p:8500,a:['Restaurant','Pool','Spa','Wi-Fi'],m:'comm',g:['#2f5bd8','#7eaaf5']},
  {n:'Lakeview Resort',c:'Udaipur',s:4,r:4.4,rt:3,ci:'13:00',co:'11:00',p:6200,a:['Lake View','Restaurant','Pool'],m:'net',g:['#0f8f8a','#6fd3c6']},
  {n:'Ensober Kainchi Dham',c:'Nainital',s:4,r:4.3,rt:3,ci:'12:00',co:'11:00',p:4800,a:['Restaurant','Lounge','Room Service 24 Hours'],m:'comm',g:['#8a5a3c','#d9a273']},
  {n:'Heritage Haveli',c:'Jaipur',s:4,r:4.5,rt:5,ci:'12:00',co:'11:00',p:5400,a:['Heritage Stay','Restaurant','Wi-Fi'],m:'net',g:['#b4543a','#f0a27f']},
@@ -821,7 +1023,7 @@ const HOTELS=[
  {n:'Backwater Bliss',c:'Kochi',s:5,r:4.7,rt:6,ci:'14:00',co:'12:00',p:9300,a:['Spa','Pool','Houseboat','Wi-Fi'],m:'comm',g:['#2a8a5a','#86d9a8']},
  {n:'City Comfort Inn',c:'Mumbai',s:3,r:3.9,rt:3,ci:'12:00',co:'11:00',p:3900,a:['Wi-Fi','Breakfast','Airport Transfer'],m:'net',g:['#5b4bb5','#a9a0ec']}
 ];
-HOTELS.unshift({code:PROPERTY_CODE,n:HOTEL_NAME,c:CITY_NAME||'Your city',s:4,r:4.5,rt:3,ci:'14:00',co:'12:00',p:7500,a:['Restaurant','Wi-Fi','Parking'],m:'comm',g:['#1f5eff','#7aa2ff']});
+if(HOTEL_NAME) HOTELS.unshift({code:PROPERTY_CODE,n:HOTEL_NAME,c:CITY_NAME||'Your city',s:4,r:4.5,rt:3,ci:'14:00',co:'12:00',p:7500,a:['Restaurant','Wi-Fi','Parking'],m:'comm',g:['#2f6fe0','#7eaaf5']});
 const inr=n=>'₹'+n.toLocaleString('en-IN');
 const cityEl=$('#pv-city'), qEl=$('#pv-q'), starEl=$('#pv-star');
 [...new Set(HOTELS.map(h=>h.c))].sort().forEach(c=>cityEl.insertAdjacentHTML('beforeend','<option>'+c+'</option>'));
@@ -830,11 +1032,11 @@ function renderHotels(){
   const list=HOTELS.filter(h=>(!q||h.n.toLowerCase().includes(q))&&(!city||h.c===city)&&(!star||h.s===star));
   $('#pv-count').textContent=list.length;
   $('#pv-list').innerHTML=list.length?list.map(h=>`
-   <div class="b-prop"><div class="th" style="background:linear-gradient(135deg,${h.g[0]},${h.g[1]})"><i class="bi bi-building"></i></div>
-    <div class="bd"><div><h6>${h.n} <span style="color:#e8a317;font-size:.66rem">${'★'.repeat(h.s)}</span></h6><div class="loc"><i class="bi bi-geo-alt-fill"></i> ${h.c} · <b>${h.r}</b>/5 guest rating</div></div>
+   <div class="b-prop"><div class="th" style="background:url('images/property-${HOTELS.indexOf(h)%3+1}.jpg') center/cover no-repeat"></div>
+    <div class="bd"><div><h6>${h.n} <span style="color:#f0a93b;font-size:.66rem">${'★'.repeat(h.s)}</span></h6><div class="loc"><i class="bi bi-geo-alt-fill"></i> ${h.c} · <b>${h.r}</b>/5 guest rating</div></div>
      <div class="meta"><b>${h.rt}</b> room types &nbsp; Check-in <b>${h.ci}</b> &nbsp; Check-out <b>${h.co}</b></div>
-     <div class="b-chips">${h.a.map(a=>'<span>✓ '+a+'</span>').join('')}<span class="bd2 ${h.m==='net'?'net':''}">${h.m==='net'?'Net Rate':'% Commission'}</span></div>
-     <div class="ft"><div class="pr">Starting from<b>${inr(h.p)}</b>${h.m==='net'?'Net rate':'Commission rate'} + taxes / night</div>
+     <div class="b-chips">${h.a.map(a=>'<span>✓ '+a+'</span>').join('')}<span class="bd2 ${h.m==='net'?'net':''}">${h.m==='net'?'Non Commissionable':'% Commission'}</span></div>
+     <div class="ft"><div class="pr">Starting from<b>${inr(h.p)}</b>${h.m==='net'?'Non commissionable rate':'Commission rate'} + taxes / night</div>
       <div class="acts"><button type="button" class="pri" data-h="${HOTELS.indexOf(h)}" data-t="rates">Book This Property</button><button type="button" data-h="${HOTELS.indexOf(h)}" data-t="info">Property Information</button></div></div></div></div>`).join(''):'<div class="b-empty">No properties match your filters.</div>';
 }
 [qEl,cityEl,starEl].forEach(el=>el.addEventListener('input',renderHotels));
@@ -859,8 +1061,8 @@ function closeDetail(){ det.hidden=true; lv.hidden=false; mainEl.scrollTop=0; }
 function renderDetail(){
   const h=S.h, net=h.m==='net';
   const head=`<button type="button" class="pd-back" data-a="back">← Back to results</button>
-   <div class="pd-head"><div><h4>${h.n}</h4><p>📍 ${h.c} · <span style="color:#e8a317">${'★'.repeat(h.s)}</span> · Property ID ${hid(h)}</p></div>
-   <div class="bg"><button type="button" class="pd-gq" data-a="toast">Group Quote</button><span class="pd-comm ${net?'net':''}">${net?'Net Rate':'15.00% Commission'}</span></div></div>
+   <div class="pd-head"><div><h4>${h.n}</h4><p>📍 ${h.c} · <span style="color:#f0a93b">${'★'.repeat(h.s)}</span> · Property ID ${hid(h)}</p></div>
+   <div class="bg"><button type="button" class="pd-gq" data-a="toast">Group Quote</button><span class="pd-comm ${net?'net':''}">${net?'Non Commissionable':'15.00% Commission'}</span></div></div>
    <div class="pd-tabs"><button type="button" class="${S.tab==='rates'?'on':''}" data-a="tab" data-v="rates">Rates &amp; Booking</button><button type="button" class="${S.tab==='info'?'on':''}" data-a="tab" data-v="info">Property Information</button></div>`;
   det.innerHTML=head+(S.tab==='info'?infoHTML(h):ratesHTML(h));
 }
@@ -868,7 +1070,7 @@ function infoHTML(h){
   const am=[...new Set([...h.a,'Front Desk','Complimentary Breakfast','Elevator','Restaurant','Coffee Shop','Room Service','Parking','Conference Facilities','Internet Access in rooms','Non Smoking'])];
   return `<div class="pd-gal">${[h.g,['#8a5a3c','#d9a273'],['#4a6a8a','#a8c0da'],['#b4543a','#f0a27f'],['#2a8a5a','#86d9a8']].map((g,k)=>`<div style="background:linear-gradient(135deg,${g[0]},${g[1]})"><i class="bi bi-${k?'image':'building'}"></i>${k?'':'Standard Room – Comfort &amp; Affordability in '+h.c}</div>`).join('')}</div>
   <div class="pd-3"><div><small>Check-in</small><b>${h.ci}</b></div><div><small>Check-out</small><b>${h.co}</b></div><div><small>Currency</small><b>INR</b></div></div>
-  <div class="pd-card"><h6>Hotel amenities</h6><div class="pd-chips">${am.map(a=>'<span>✓ '+a+'</span>').join('')}</div></div>
+  <div class="pd-card"><h6>Property amenities</h6><div class="pd-chips">${am.map(a=>'<span>✓ '+a+'</span>').join('')}</div></div>
   <div class="pd-card"><h6>Activities &amp; recreation</h6><div class="pd-chips act"><span>✓ Children Activities</span><span>✓ Fitness Center</span><span>✓ Swimming Pool</span><span>✓ Boating</span></div></div>
   <div class="pd-card"><h6>Location</h6><p>${ADDR[h.c]||h.c}</p></div>
   <div class="pd-card"><h6>Stay &amp; booking policy</h6><div class="pd-pol"><span>Check-in</span><b>${h.ci}</b></div><div class="pd-pol"><span>Check-out</span><b>${h.co}</b></div><div class="pd-pol"><span>Minimum adult age</span><b>12 years</b></div><div class="pd-pol"><span>Cancellation</span><b>Free up to 48 hrs</b></div></div>`;
@@ -947,7 +1149,6 @@ let toastT;
 function pvToast(m){const el=$('#pv-toast');el.textContent=m;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2200);}
 
 $$('.b-side .b-nav:not(.b-gh), .b-sub-item').forEach(n=>n.addEventListener('click',()=>{if(!n.classList.contains('active')||n.classList.contains('b-nav'))pvToast('Demo preview only. Full portal opens after activation.');}));
-$('#pv-title').textContent='Travel Agent Portal';
 })();
 </script>
 </body>
