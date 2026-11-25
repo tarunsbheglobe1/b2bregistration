@@ -667,7 +667,32 @@
 .b2b-reg .gal-video .tx{color:var(--b-navy);background:linear-gradient(transparent,rgba(255,255,255,.9))}
 .b2b-reg .gal-cap{background:rgba(255,255,255,.92);color:var(--b-navy);box-shadow:0 1px 4px rgba(15,30,60,.15)}
 .b2b-reg .b-cta{box-shadow:0 4px 12px rgba(47,111,224,.2)}
-@media (min-width:992px) and (max-height:860px){.b2b-reg .nw-eyebrow{display:none}.b2b-reg .nw-prop{margin-top:8px}.b2b-reg .nw-prop .pn,.b2b-reg .nw-prop .pc{padding:6px 12px}}
+/* ---- Gallery restructure: full screenshots (no cropping), compact video banner ---- */
+.b2b-reg .gal-th img{object-fit:cover;object-position:center top}
+.b2b-reg .gal-th:first-child{aspect-ratio:1892/837}
+.b2b-reg .gal-th:not(:first-child){aspect-ratio:2.15/1}
+.b2b-reg .gal-video{aspect-ratio:16/5;min-height:110px}
+@media (min-width:992px){
+  .b2b-reg .b-right-inner{overflow-y:auto;scrollbar-width:none}
+  .b2b-reg .b-right-inner::-webkit-scrollbar{display:none}
+  .b2b-reg .b-right-inner .b-gal{flex:none;min-height:0;padding:16px}
+  .b2b-reg .b-right-inner .gal-head{margin-bottom:12px}
+  .b2b-reg .b-right-inner .gal-grid{flex:none;grid-template-rows:none;gap:12px}
+  .b2b-reg .b-right-inner .gal-th:first-child{aspect-ratio:1892/837;height:auto}
+  .b2b-reg .b-right-inner .gal-th:not(:first-child){aspect-ratio:2.15/1;height:auto}
+  .b2b-reg .b-right-inner .gal-video{flex:none;aspect-ratio:16/5;min-height:0;margin-top:12px}
+  .b2b-reg .gal-video .tx{padding:18px 16px 10px}
+}
+/* ---- Video on top, screenshots underneath ---- */
+.b2b-reg .gal-video{margin-top:0;margin-bottom:12px;aspect-ratio:16/8.4}
+.b2b-reg .gal-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+.b2b-reg .gal-th,.b2b-reg .gal-th:first-child,.b2b-reg .gal-th:not(:first-child){grid-column:auto;aspect-ratio:16/12}
+.b2b-reg .gal-th img{object-fit:cover;object-position:top left}
+.b2b-reg .gal-cap{left:6px;bottom:6px;font-size:.64rem;padding:2px 8px}
+@media (min-width:992px){
+  .b2b-reg .b-right-inner .gal-video{margin-top:0;margin-bottom:12px;aspect-ratio:16/8.4}
+  .b2b-reg .b-right-inner .gal-th:first-child,.b2b-reg .b-right-inner .gal-th:not(:first-child){aspect-ratio:16/12;height:auto}
+}@media (min-width:992px) and (max-height:860px){.b2b-reg .nw-eyebrow{display:none}.b2b-reg .nw-prop{margin-top:8px}.b2b-reg .nw-prop .pn,.b2b-reg .nw-prop .pc{padding:6px 12px}}
 </style>
 </head>
 <body class="m-0">
@@ -827,15 +852,15 @@
       <!-- Screenshot gallery + video (click to enlarge / play in popup) -->
       <div class="b-gal" id="b-gal">
         <div class="gal-head"><h3>B2BStays platform preview</h3></div>
+        <button type="button" class="gal-video" id="gal-video" aria-label="Play platform video">
+          <span class="pl"><i class="bi bi-play-fill"></i></span>
+          <span class="tx"><b>B2BStays platform walkthrough</b><small id="gal-vsub">Video coming soon</small></span>
+        </button>
         <div class="gal-grid">
           <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121859.png" aria-label="View screenshot 1: Properties"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121859.png" alt="Properties available for booking"><span class="gal-cap">Search &amp; Book</span></button>
           <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121933.png" aria-label="View screenshot 2: Hotel Packages"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121933.png" alt="Packages"><span class="gal-cap">Packages</span></button>
           <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121956.png" aria-label="View screenshot 3: Cab Booking"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121956.png" alt="Cab booking"><span class="gal-cap">Cab Booking</span></button>
         </div>
-        <button type="button" class="gal-video" id="gal-video" aria-label="Play platform video">
-          <span class="pl"><i class="bi bi-play-fill"></i></span>
-          <span class="tx"><b>B2BStays platform walkthrough</b><small id="gal-vsub">Video coming soon</small></span>
-        </button>
       </div>
       <div class="b-lb" id="b-lb" hidden role="dialog" aria-modal="true">
         <button type="button" class="lb-x" id="lb-x" aria-label="Close"><i class="bi bi-x-lg"></i></button>
@@ -977,7 +1002,7 @@ actForm.addEventListener('submit',async e=>{
   document.addEventListener('keydown',e=>{if(e.key==='Escape')dds.forEach(x=>x.classList.remove('open'));});
 }
 /* ---------------- Screenshot gallery + video popup ---------------- */
-const VIDEO_URL='';   // paste your YouTube link here (watch / youtu.be / embed all work)
+const VIDEO_URL='https://youtu.be/W7dunnjRNkg';   // paste your YouTube link here (watch / youtu.be / embed all work)
 {
   const lb=$('#b-lb'), body=$('#lb-body');
   root.appendChild(lb);   // keep popup above the page content
@@ -990,7 +1015,12 @@ const VIDEO_URL='';   // paste your YouTube link here (watch / youtu.be / embed 
   $('#lb-prev').addEventListener('click',e=>{e.stopPropagation();show(cur-1);});
   $('#lb-next').addEventListener('click',e=>{e.stopPropagation();show(cur+1);});
   document.addEventListener('keydown',e=>{if(lb.hidden||lb.classList.contains('single'))return;if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
-  { const vid=ytId(VIDEO_URL); if(vid){ $('#gal-video').style.backgroundImage='url(https://img.youtube.com/vi/'+vid+'/maxresdefault.jpg)'; $('#gal-vsub').textContent='Watch video'; } }
+  { const vid=ytId(VIDEO_URL); if(vid){
+      const gv=$('#gal-video'), t=new Image(), base='https://img.youtube.com/vi/'+vid+'/';
+      t.onload=()=>{ gv.style.backgroundImage='url('+base+(t.naturalWidth>200?'maxresdefault':'hqdefault')+'.jpg)'; };
+      t.onerror=()=>{ gv.style.backgroundImage='url('+base+'hqdefault.jpg)'; };
+      t.src=base+'maxresdefault.jpg';
+      $('#gal-vsub').textContent='Watch video'; } }
   $('#gal-video').addEventListener('click',()=>{
     const id=ytId(VIDEO_URL);
     open(id?'<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="B2BStays video"></iframe>'
