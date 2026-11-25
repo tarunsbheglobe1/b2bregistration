@@ -857,9 +857,9 @@
           <span class="tx"><b>B2BStays platform walkthrough</b><small id="gal-vsub">Video coming soon</small></span>
         </button>
         <div class="gal-grid">
-          <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121859.png" aria-label="View screenshot 1: Properties"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121859.png" alt="Properties available for booking"><span class="gal-cap">Search &amp; Book</span></button>
-          <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121933.png" aria-label="View screenshot 2: Hotel Packages"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121933.png" alt="Packages"><span class="gal-cap">Packages</span></button>
-          <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121956.png" aria-label="View screenshot 3: Cab Booking"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/Screenshot-2026-11-24-121956.png" alt="Cab booking"><span class="gal-cap">Cab Booking</span></button>
+          <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/preview-1.webp" aria-label="View screenshot 1: Properties"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/preview-1.webp" alt="Properties available for booking"><span class="gal-cap">Search &amp; Book</span></button>
+          <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/preview-2.webp" aria-label="View screenshot 2: Hotel Packages"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/preview-2.webp" alt="Packages"><span class="gal-cap">Packages</span></button>
+          <button type="button" class="gal-th" data-img="https://www.eglobe-solutions.com/mailer/images/Marketing/preview-3.webp" aria-label="View screenshot 3: Cab Booking"><img src="https://www.eglobe-solutions.com/mailer/images/Marketing/preview-3.webp" alt="Cab booking"><span class="gal-cap">Cab Booking</span></button>
         </div>
       </div>
       <div class="b-lb" id="b-lb" hidden role="dialog" aria-modal="true">
@@ -1062,7 +1062,7 @@ function renderHotels(){
   const list=HOTELS.filter(h=>(!q||h.n.toLowerCase().includes(q))&&(!city||h.c===city)&&(!star||h.s===star));
   $('#pv-count').textContent=list.length;
   $('#pv-list').innerHTML=list.length?list.map(h=>`
-   <div class="b-prop"><div class="th" style="background:url('images/property-${HOTELS.indexOf(h)%3+1}.jpg') center/cover no-repeat"></div>
+   <div class="b-prop"><div class="th" style="background:url('images/property-${HOTELS.indexOf(h)%3+1}.webp') center/cover no-repeat"></div>
     <div class="bd"><div><h6>${h.n} <span style="color:#f0a93b;font-size:.66rem">${'★'.repeat(h.s)}</span></h6><div class="loc"><i class="bi bi-geo-alt-fill"></i> ${h.c} · <b>${h.r}</b>/5 guest rating</div></div>
      <div class="meta"><b>${h.rt}</b> room types &nbsp; Check-in <b>${h.ci}</b> &nbsp; Check-out <b>${h.co}</b></div>
      <div class="b-chips">${h.a.map(a=>'<span>✓ '+a+'</span>').join('')}<span class="bd2 ${h.m==='net'?'net':''}">${h.m==='net'?'Non Commissionable':'% Commission'}</span></div>
